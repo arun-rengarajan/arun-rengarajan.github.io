@@ -326,3 +326,21 @@ footer a { color: var(--muted); }
 .live-toggle.paused .i-play { display: contents; }
 .live-toggle .i-pause { display: contents; }
 .live iframe.dia { background: var(--diagram-bg); }
+@media (max-width: 560px) {
+  .live .live-toggle { left: 8px; bottom: 8px; width: 32px; min-height: 32px; }
+  .live-toggle .icon { width: 13px; height: 13px; }
+}
+
+/* How I work */
+.how .sec-head { margin-bottom: 22px; }
+.how-grid { list-style: none; margin: 0; padding: 0; display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 16px; }
+.how-card { border-radius: var(--r-panel); padding: 22px 22px 20px; display: flex; flex-direction: column; gap: 10px; }
+.how-card h3 { margin: 0; font-size: 18.5px; line-height: 1.25; letter-spacing: -.015em; }
+.how-card p { margin: 0; color: var(--muted); font-size: 15px; line-height: 1.55; flex: 1; }
+.how-link { align-self: flex-start; display: inline-flex; align-items: center; gap: 6px; margin-top: 4px; font-size: 14px; font-weight: 500;
+  color: var(--accent); text-decoration: none; border-radius: 6px; }
+.how-link .icon { width: 15px; height: 15px; transition: transform .2s var(--ease); }
+.how-link:hover { text-decoration: underline; text-underline-offset: 3px; }
+.how-link:hover .icon { transform: translateX(2px); }
+@media (max-width: 980px) { .how-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
+@media (max-width: 560px) { .how-grid { grid-template-columns: minmax(0, 1fr); } .how-card { padding: 18px; } }
