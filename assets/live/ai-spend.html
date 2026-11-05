@@ -1,0 +1,132 @@
+<!doctype html><html><head><meta charset="utf-8"><style>
+* { box-sizing: border-box; margin: 0; padding: 0; }
+body { width: 1440px; height: 900px; overflow: hidden; background: #f5f6f8; color: #111827;
+  font: 14px/1.45 -apple-system, BlinkMacSystemFont, "SF Pro Text", "Inter", system-ui, sans-serif; position: relative; }
+.num { font-variant-numeric: tabular-nums; }
+.top { position: absolute; left: 260px; right: 0; top: 0; height: 52px; background: rgba(255,255,255,.72); backdrop-filter: blur(16px);
+  border-bottom: 1px solid #e3e6ec; display: flex; align-items: center; gap: 6px; padding: 0 28px; }
+.tab { padding: 6px 12px; border-radius: 8px; color: #5f6b7a; font-weight: 500; font-size: 13.5px; }
+.tab.on { background: #eef0f4; color: #111827; }
+.side { position: absolute; left: 0; top: 0; bottom: 0; width: 260px; background: #eef1f6; border-right: 1px solid #e3e6ec; padding: 26px 20px; }
+.side h4 { font-size: 15px; font-weight: 650; margin: 0 0 12px; }
+.side h4 + .f { margin-top: 0; }
+.f { margin: 0 0 14px; }
+.f label { display: block; font-size: 12.5px; color: #111827; margin-bottom: 5px; }
+.f .sel { background: #fff; border: 1px solid #e3e6ec; border-radius: 8px; padding: 8px 10px; font-size: 13px; color: #5f6b7a; display: flex; justify-content: space-between; }
+.side .reset { border: 1px solid #e3e6ec; border-radius: 8px; padding: 8px; text-align: center; color: #5f6b7a; font-size: 13px; margin-top: 6px; }
+.side .cap { font-size: 11.5px; color: #5f6b7a; margin-top: 22px; line-height: 1.5; }
+.main { position: absolute; left: 260px; right: 0; top: 52px; bottom: 0; padding: 26px 32px; }
+h1 { font-size: 26px; font-weight: 650; letter-spacing: -.01em; }
+.sub { color: #5f6b7a; font-size: 13px; margin: 2px 0 16px; }
+.kpis { display: flex; background: #fff; border: 1px solid #e3e6ec; border-radius: 12px; margin-bottom: 16px; }
+.kpi { flex: 1; padding: 14px 18px; border-left: 1px solid #e3e6ec; }
+.kpi:first-child { border-left: 0; }
+.kpi .l { font-size: 12.5px; color: #5f6b7a; }
+.kpi .v { font-size: 26px; font-weight: 650; letter-spacing: -.01em; font-variant-numeric: tabular-nums; }
+.kpi .d { font-size: 12px; color: #5f6b7a; }
+.d.up { color: #1f7a4d; } .d.dn { color: #b8463b; }
+.grid { display: grid; gap: 16px; }
+.card { background: #fff; border: 1px solid #e3e6ec; border-radius: 12px; padding: 16px 18px; overflow: hidden; }
+.card h3 { font-size: 15px; font-weight: 650; margin-bottom: 8px; }
+.card .note { font-size: 11.5px; color: #5f6b7a; margin-top: 6px; }
+table { width: 100%; border-collapse: collapse; font-size: 12.5px; }
+th { text-align: left; color: #5f6b7a; font-weight: 500; padding: 7px 8px; border-bottom: 1px solid #e3e6ec; }
+td { padding: 7px 8px; border-bottom: 1px solid #f0f2f5; font-variant-numeric: tabular-nums; }
+td.r, th.r { text-align: right; }
+.pill { display: inline-block; padding: 1px 9px; border-radius: 999px; font-size: 12px; font-weight: 600; }
+.g { background: #e7f3ec; color: #1f7a4d; } .y { background: #fbf1e4; color: #a8641a; } .rd { background: #f8e9e7; color: #b8463b; }
+.dock { position: absolute; right: 22px; bottom: 18px; display: flex; gap: 8px; }
+.dock span { padding: 8px 14px; border-radius: 999px; font-size: 13px; font-weight: 600; border: 1px solid #e3e6ec; background: #fff; }
+.dock span.p { background: #1f5fbf; color: #fff; border-color: #1f5fbf; }
+.stamp { position: absolute; right: 22px; top: 64px; z-index: 50; display: flex; align-items: center; gap: 8px; padding: 7px 14px;
+  border-radius: 999px; background: #fff3dc; border: 1.5px solid #a8641a; color: #7a4a00; font-weight: 700; font-size: 13px;
+  letter-spacing: .06em; text-transform: uppercase; box-shadow: 0 4px 14px rgba(168,100,26,.18); }
+.stamp small { font-weight: 500; letter-spacing: 0; text-transform: none; font-size: 12px; }
+svg text { font: 11px -apple-system, system-ui, sans-serif; fill: #5f6b7a; }
+</style></head><body><nav class="top"><span class="tab on">Overview</span><span class="tab">Providers</span><span class="tab">People</span><span class="tab">Person detail</span><span class="tab">Models</span><span class="tab">AI services</span></nav><aside class="side"><h4>Period</h4><div class="f"><label>Window</label><div class="sel"><span>Last 30 days</span><span>▾</span></div></div><h4>Filters</h4><div class="f"><label>AI provider</label><div class="sel"><span>All providers</span><span>▾</span></div></div><div class="f"><label>Product</label><div class="sel"><span>All products</span><span>▾</span></div></div><div class="f"><label>Person</label><div class="sel"><span>All people</span><span>▾</span></div></div><div class="f"><label>Model</label><div class="sel"><span>All models</span><span>▾</span></div></div><div class="reset">Reset filters</div><div class="cap">Usage from each provider's billing data, priced at the billed rate for that day. Refreshed every hour.</div></aside><main class="main" data-openai="$5.0K" data-openai-mtd="$909" data-openai-users="17" data-openai-per="$292"><h1>AI spend</h1><div class="sub">Every AI provider in one place · USD</div><div class="kpis"><div class="kpi"><div class="l">AI spend</div><div class="v">$24.4K</div><div class="d up">+38% vs previous 30 days</div></div><div class="kpi"><div class="l">Month to date</div><div class="v">$4.5K</div><div class="d">projected $27.2K</div></div><div class="kpi"><div class="l">Active users</div><div class="v">46</div><div class="d up">+9 vs previous</div></div><div class="kpi"><div class="l">Spend per active user</div><div class="v">$530</div><div class="d">4% lower than previous</div></div><div class="kpi"><div class="l">Cache read share</div><div class="v">88%</div><div class="d up">+3 pts</div></div></div><div class="grid" style="grid-template-columns:1.25fr 1fr"><div class="card"><h3>Daily AI spend by provider</h3><div style="margin-bottom:6px"><span style="display:inline-flex;align-items:center;gap:6px;margin-right:14px;font-size:12px;color:#5f6b7a"><i style="width:10px;height:10px;border-radius:2px;background:#1f5fbf;display:inline-block"></i>Snowflake Cortex</span><span style="display:inline-flex;align-items:center;gap:6px;margin-right:14px;font-size:12px;color:#5f6b7a"><i style="width:10px;height:10px;border-radius:2px;background:#2f8f9d;display:inline-block"></i>OpenAI</span><span style="display:inline-flex;align-items:center;gap:6px;margin-right:14px;font-size:12px;color:#5f6b7a"><i style="width:10px;height:10px;border-radius:2px;background:#a8641a;display:inline-block"></i>AWS Bedrock</span></div><svg viewBox="0 0 600 220" width="100%" style="display:block"><line x1="52" x2="592" y1="198.0" y2="198.0" stroke="#eef0f4"/><text x="46" y="202.0" text-anchor="end">$0</text><line x1="52" x2="592" y1="150.5" y2="150.5" stroke="#eef0f4"/><text x="46" y="154.5" text-anchor="end">$200</text><line x1="52" x2="592" y1="103.0" y2="103.0" stroke="#eef0f4"/><text x="46" y="107.0" text-anchor="end">$400</text><line x1="52" x2="592" y1="55.5" y2="55.5" stroke="#eef0f4"/><text x="46" y="59.5" text-anchor="end">$600</text><line x1="52" x2="592" y1="8.0" y2="8.0" stroke="#eef0f4"/><text x="46" y="12.0" text-anchor="end">$800</text><text x="52.0" y="216" text-anchor="middle">Oct 7</text><text x="182.3" y="216" text-anchor="middle">Oct 14</text><text x="312.7" y="216" text-anchor="middle">Oct 21</text><text x="443.0" y="216" text-anchor="middle">Oct 28</text><text x="573.4" y="216" text-anchor="middle">Nov 4</text><polyline points="52.0,75.6 70.6,97.4 89.2,89.8 107.9,112.3 126.5,97.1 145.1,65.6 163.7,99.6 182.3,108.0 201.0,105.4 219.6,65.2 238.2,76.4 256.8,105.2 275.4,70.9 294.1,51.1 312.7,60.1 331.3,57.2 349.9,63.8 368.6,51.5 387.2,45.0 405.8,46.8 424.4,72.5 443.0,31.3 461.7,38.6 480.3,51.2 498.9,40.6 517.5,73.6 536.1,66.6 554.8,31.9 573.4,41.7 592.0,24.1" fill="none" stroke="#1f5fbf" stroke-width="2"/><polyline points="52.0,157.9 70.6,148.2 89.2,168.1 107.9,160.4 126.5,157.6 145.1,152.6 163.7,156.4 182.3,169.0 201.0,152.3 219.6,166.4 238.2,158.0 256.8,156.7 275.4,167.7 294.1,149.4 312.7,153.4 331.3,169.0 349.9,169.2 368.6,167.5 387.2,162.5 405.8,159.7 424.4,152.9 443.0,165.6 461.7,157.6 480.3,151.3 498.9,158.8 517.5,157.6 536.1,150.1 554.8,151.3 573.4,166.7 592.0,148.4" fill="none" stroke="#2f8f9d" stroke-width="2"/><polyline points="52.0,174.2 70.6,175.7 89.2,178.7 107.9,174.6 126.5,173.2 145.1,172.6 163.7,181.3 182.3,171.6 201.0,173.7 219.6,171.1 238.2,180.4 256.8,173.6 275.4,171.2 294.1,173.1 312.7,175.6 331.3,173.7 349.9,181.9 368.6,169.4 387.2,176.5 405.8,175.1 424.4,178.3 443.0,177.1 461.7,168.6 480.3,177.5 498.9,167.8 517.5,182.9 536.1,173.2 554.8,168.4 573.4,173.7 592.0,181.6" fill="none" stroke="#a8641a" stroke-width="2"/></svg></div><div class="card"><h3>CoCo Desktop is the biggest single line</h3><svg viewBox="0 0 470 232" width="100%" style="display:block"><text x="122" y="15" text-anchor="end" style="fill:#111827">CoCo Desktop</text><rect x="130" y="4" width="270.0" height="19" rx="3" fill="#1f5fbf"/><text x="406.0" y="15" style="fill:#111827;font-weight:600">$7.6K</text><text x="122" y="44" text-anchor="end" style="fill:#111827">OpenAI API</text><rect x="130" y="33" width="144.5" height="19" rx="3" fill="#1f5fbf"/><text x="280.5" y="44" style="fill:#111827;font-weight:600">$4.1K</text><text x="122" y="73" text-anchor="end" style="fill:#111827">CoCo CLI</text><rect x="130" y="62" width="105.7" height="19" rx="3" fill="#1f5fbf"/><text x="241.7" y="73" style="fill:#111827;font-weight:600">$3.0K</text><text x="122" y="102" text-anchor="end" style="fill:#111827">Bedrock: Claude</text><rect x="130" y="91" width="93.4" height="19" rx="3" fill="#1f5fbf"/><text x="229.4" y="102" style="fill:#111827;font-weight:600">$2.6K</text><text x="122" y="131" text-anchor="end" style="fill:#111827">Cortex Agents</text><rect x="130" y="120" width="82.2" height="19" rx="3" fill="#1f5fbf"/><text x="218.2" y="131" style="fill:#111827;font-weight:600">$2.3K</text><text x="122" y="160" text-anchor="end" style="fill:#111827">AI functions</text><rect x="130" y="149" width="70.4" height="19" rx="3" fill="#1f5fbf"/><text x="206.4" y="160" style="fill:#111827;font-weight:600">$2.0K</text><text x="122" y="189" text-anchor="end" style="fill:#111827">ChatGPT Team</text><rect x="130" y="178" width="31.7" height="19" rx="3" fill="#1f5fbf"/><text x="167.7" y="189" style="fill:#111827;font-weight:600">$893</text><text x="122" y="218" text-anchor="end" style="fill:#111827">Cortex Search</text><rect x="130" y="207" width="58.7" height="19" rx="3" fill="#1f5fbf"/><text x="194.7" y="218" style="fill:#111827;font-weight:600">$1.7K</text></svg></div><div class="card" style="grid-column:span 2"><h3>Top people by AI spend</h3><table><tr><th>Person</th><th>Providers</th><th class="r">Requests</th><th class="r">Spend</th><th class="r">$ per request</th></tr><tr><td>Alex Morgan</td><td>Cortex, OpenAI</td><td class="r">1,840</td><td class="r">$1.3K</td><td class="r">$0.71</td></tr><tr><td>Priya Shah</td><td>Cortex</td><td class="r">1,420</td><td class="r">$968</td><td class="r">$0.68</td></tr><tr><td>Daniel Ortiz</td><td>Cortex, Bedrock</td><td class="r">1,105</td><td class="r">$744</td><td class="r">$0.67</td></tr><tr><td>Hannah Becker</td><td>OpenAI</td><td class="r">960</td><td class="r">$512</td><td class="r">$0.53</td></tr><tr><td>Marcus Lee</td><td>Cortex</td><td class="r">830</td><td class="r">$431</td><td class="r">$0.52</td></tr></table></div></div></main><div class="dock"><span>Feedback</span><span class="p">Ask the data</span></div><div class="stamp">Sample data <small>· illustrative, not real figures</small></div><style>
+.lv-cur { position: absolute; left: 0; top: 0; z-index: 90; pointer-events: none; }
+.lv-cur svg { display: block; filter: drop-shadow(0 2px 3px rgba(0,0,0,.25)); }
+.lv-cur i { position: absolute; left: -11px; top: -11px; width: 26px; height: 26px; border-radius: 50%; border: 2px solid #1f5fbf; opacity: 0; }
+.lv-tip { position: absolute; z-index: 80; background: #111827; color: #fff; border-radius: 10px; padding: 8px 12px; font-size: 12.5px;
+  line-height: 1.45; box-shadow: 0 10px 24px rgba(17,24,39,.25); white-space: nowrap; pointer-events: none; }
+.lv-tip b { font-size: 14px; }
+.lv-sw { display: inline-grid; } .lv-sw > * { grid-area: 1 / 1; }
+.stamp { z-index: 100 !important; }  /* the sample-data tag stays above every overlay */
+</style><script>
+const L = 11000, D = 800, EZ = 'cubic-bezier(.3,.7,.2,1)';
+const $ = (s, r = document) => r.querySelector(s), $$ = (s, r = document) => [...r.querySelectorAll(s)];
+const run = (el, k, o) => el && el.animate(k, o);
+// Hold `a` until t0, ease to `b` by t1, hold until t2, ease back to `a` by t3 (default: the reset at the loop's end).
+const win = (el, a, b, t0, t1, t2 = .93, t3 = .97, easing = EZ) => run(el, [
+  { ...a, offset: 0 }, { ...a, offset: t0, easing }, { ...b, offset: t1 }, { ...b, offset: t2, easing: 'ease-in-out' }, { ...a, offset: t3 }, { ...a, offset: 1 }],
+  { duration: L, delay: D, iterations: Infinity, fill: 'both' });
+const show = (el, t0, t1, dy = 6) => win(el, { opacity: 0, transform: `translateY(${dy}px)` }, { opacity: 1, transform: 'none' }, t0, t1);
+// Dims through a wrapper (SVG group, or each table cell) so it never fights an element's own fade-in.
+const dim = (el, t0, t1, to = .2) => { if (!el) return;
+  if (el.tagName === 'TR') return [...el.children].forEach(td => win(td, { opacity: 1 }, { opacity: to }, t0, t1));
+  if (el instanceof SVGElement) { const g = document.createElementNS('http://www.w3.org/2000/svg', 'g'); el.before(g); g.append(el); el = g; }
+  return win(el, { opacity: 1 }, { opacity: to }, t0, t1); };
+const muted = s => `<span style="color:#5f6b7a">${s}</span>`;
+const grow = (el, axis, origin, t0, t1) => { if (!el) return; el.style.transformBox = 'fill-box'; el.style.transformOrigin = origin;
+  return win(el, { transform: `scale${axis}(0)` }, { transform: 'none' }, t0, t1); };
+const draw = (p, t0, t1) => { if (!p) return; const n = p.getTotalLength(); p.style.strokeDasharray = `${n}px`;
+  return win(p, { strokeDashoffset: `${n}px` }, { strokeDashoffset: '0px' }, t0, t1, .93, .97, 'cubic-bezier(.4,0,.2,1)'); };
+const typeIn = (el, t0, t1) => win(el, { clipPath: 'inset(0 100% 0 0)' }, { clipPath: 'inset(0 0% 0 0)' }, t0, t1, .93, .97, `steps(${el.textContent.length}, end)`);
+const lines = (el, t0, t1, n = 4) => win(el, { clipPath: 'inset(0 0 100% 0)' }, { clipPath: 'inset(0 0 0% 0)' }, t0, t1, .93, .97, `steps(${n}, end)`);
+const intro = (els, step = 60, delay = 0) => els.forEach((el, i) => run(el, [{ opacity: 0, transform: 'translateY(10px)' }, { opacity: 1, transform: 'none' }],
+  { duration: 600, delay: delay + i * step, easing: EZ, fill: 'backwards' }));
+const swap = (el, html, t0, t1) => { if (!el) return; const a = document.createElement('span'), b = document.createElement('span'), w = document.createElement('span');
+  a.innerHTML = el.innerHTML; b.innerHTML = html; w.className = 'lv-sw'; w.append(a, b); el.replaceChildren(w);
+  win(a, { opacity: 1 }, { opacity: 0 }, t0, t1); win(b, { opacity: 0 }, { opacity: 1 }, t0, t1); return b; };
+const field = label => $$('.side .f').find(f => f.querySelector('label').textContent === label)?.querySelector('.sel span');
+const at = (el, dx = .5, dy = .5) => { const r = el.getBoundingClientRect(); return [r.left + dx * r.width, r.top + dy * r.height]; };
+const svgPt = (poly, i) => { const pts = poly.points, p = pts.getItem(i < 0 ? pts.numberOfItems + i : i), m = poly.getScreenCTM(); return [m.a * p.x + m.e, m.d * p.y + m.f]; };
+const tip = (x, y, html, t0, t1, t2, t3) => { const d = document.createElement('div'); d.className = 'lv-tip'; d.innerHTML = html;
+  document.body.append(d); d.style.left = x + 'px'; d.style.top = y + 'px'; win(d, { opacity: 0, transform: 'translateY(4px)' }, { opacity: 1, transform: 'none' }, t0, t1, t2, t3); return d; };
+// Cursor: steps are { p: [x, y], t, click }; it arrives at each point at time t and leaves shortly after.
+const cursor = steps => {
+  const c = document.createElement('div'); c.className = 'lv-cur';
+  c.innerHTML = '<i></i><svg width="26" height="26" viewBox="0 0 24 24"><path d="M4 2.5 19.5 12l-6.6 1.6 3.9 7.3-2.6 1.4-3.9-7.3L5.6 19Z" fill="#111827" stroke="#fff" stroke-width="1.4" stroke-linejoin="round"/></svg>';
+  document.body.append(c);
+  const tr = ([x, y]) => `translate(${x}px, ${y}px)`, start = [innerWidth - 80, innerHeight - 60], mv = 'cubic-bezier(.5,0,.2,1)';
+  const k = [{ transform: tr(start), opacity: 0, offset: 0 }, { transform: tr(start), opacity: 1, offset: Math.max(.01, steps[0].t - .14), easing: mv }];
+  steps.forEach((s, i) => { if (i) k.push({ transform: tr(steps[i - 1].p), opacity: 1, offset: Math.min(steps[i - 1].t + .03, s.t - .02), easing: mv });
+    k.push({ transform: tr(s.p), opacity: 1, offset: s.t }); });
+  const last = steps[steps.length - 1].p;
+  k.push({ transform: tr(last), opacity: 1, offset: .9 }, { transform: tr(last), opacity: 0, offset: .93 }, { transform: tr(last), opacity: 0, offset: 1 });
+  run(c, k, { duration: L, delay: D, iterations: Infinity, fill: 'both' });
+  const ring = [{ opacity: 0, transform: 'scale(.4)', offset: 0 }];
+  steps.filter(s => s.click).forEach(s => ring.push({ opacity: 0, transform: 'scale(.4)', offset: s.t }, { opacity: .9, transform: 'scale(.6)', offset: s.t + .004 },
+    { opacity: 0, transform: 'scale(1.6)', offset: s.t + .04 }));
+  ring.push({ opacity: 0, transform: 'scale(.4)', offset: 1 });
+  run(c.firstChild, ring, { duration: L, delay: D, iterations: Infinity, fill: 'both' });
+};
+const live = story => {
+  if (matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+  story();
+  // Test hook: #t=<ms> freezes every animation at that moment (used to check frames of the story).
+  const t = location.hash.match(/t=(\d+)/);
+  if (t) requestAnimationFrame(() => document.getAnimations().forEach(a => { a.pause(); a.currentTime = +t[1]; }));
+  // The site sends 'pause' / 'play' (WCAG 2.2.2: moving content longer than 5 s can be paused).
+  addEventListener('message', e => { if (e.source !== parent) return;
+    if (e.data === 'pause') document.getAnimations().forEach(a => a.pause());
+    if (e.data === 'play') document.getAnimations().forEach(a => a.play()); });
+};
+
+live(() => {
+  const cards = $$('.card'), main = $('.main'); intro($$('.kpi'));
+  const ls = $$('polyline', cards[0]); ls.forEach((p, i) => draw(p, .03 + i * .03, .3 + i * .03));
+  const hb = $$('rect', cards[1]), ht = $$('text', cards[1]);
+  hb.forEach((r, i) => grow(r, 'X', 'left', .26 + i * .02, .34 + i * .02)); ht.filter((_, i) => i % 2).forEach((t, i) => show(t, .3 + i * .02, .36 + i * .02, 2));
+  const rows = $$('tr', cards[2]); show($('table', cards[2]), .4, .47, 6);
+  const prov = field('AI provider'); swap(prov, 'OpenAI', .58, .6);
+  [0, 2].forEach(i => dim(ls[i], .6, .64, .1)); $$('span', cards[0].querySelector('div')).forEach(k => !/OpenAI/.test(k.textContent) && dim(k, .6, .64, .3));
+  hb.forEach((r, i) => { if (!/OpenAI|ChatGPT/.test(ht[i * 2].textContent)) [r, ht[i * 2], ht[i * 2 + 1]].forEach(e => dim(e, .6, .64, .18)); });
+  rows.slice(1).forEach(r => !/OpenAI/.test(r.textContent) && dim(r, .6, .64, .25));
+  const v = $$('.kpi .v'), d = $$('.kpi .d');
+  [[main.dataset.openai, 'OpenAI only'], [main.dataset.openaiMtd, 'OpenAI only'], [main.dataset.openaiUsers, 'use OpenAI'], [main.dataset.openaiPer, 'OpenAI only'], ['74%', 'OpenAI prompt cache']]
+    .forEach(([a, b], i) => { swap(v[i], a, .62, .66); swap(d[i], muted(b), .62, .66); });
+  const [x, y] = svgPt(ls[1], -2);
+  tip(x - 230, y - 78, `OpenAI · last 30 days<br><b>${main.dataset.openai}</b> across 17 people`, .76, .78);
+  cursor([{ p: at(prov.closest('.sel'), .55, .55), t: .56, click: true }, { p: [x + 2, y + 4], t: .75 }]);
+});</script></body></html>

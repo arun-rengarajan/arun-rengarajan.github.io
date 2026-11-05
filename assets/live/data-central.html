@@ -1,0 +1,141 @@
+<!doctype html><html><head><meta charset="utf-8"><style>
+* { box-sizing: border-box; margin: 0; padding: 0; }
+body { width: 1440px; height: 900px; overflow: hidden; background: #f5f6f8; color: #111827;
+  font: 14px/1.45 -apple-system, BlinkMacSystemFont, "SF Pro Text", "Inter", system-ui, sans-serif; position: relative; }
+.num { font-variant-numeric: tabular-nums; }
+.top { position: absolute; left: 260px; right: 0; top: 0; height: 52px; background: rgba(255,255,255,.72); backdrop-filter: blur(16px);
+  border-bottom: 1px solid #e3e6ec; display: flex; align-items: center; gap: 6px; padding: 0 28px; }
+.tab { padding: 6px 12px; border-radius: 8px; color: #5f6b7a; font-weight: 500; font-size: 13.5px; }
+.tab.on { background: #eef0f4; color: #111827; }
+.side { position: absolute; left: 0; top: 0; bottom: 0; width: 260px; background: #eef1f6; border-right: 1px solid #e3e6ec; padding: 26px 20px; }
+.side h4 { font-size: 15px; font-weight: 650; margin: 0 0 12px; }
+.side h4 + .f { margin-top: 0; }
+.f { margin: 0 0 14px; }
+.f label { display: block; font-size: 12.5px; color: #111827; margin-bottom: 5px; }
+.f .sel { background: #fff; border: 1px solid #e3e6ec; border-radius: 8px; padding: 8px 10px; font-size: 13px; color: #5f6b7a; display: flex; justify-content: space-between; }
+.side .reset { border: 1px solid #e3e6ec; border-radius: 8px; padding: 8px; text-align: center; color: #5f6b7a; font-size: 13px; margin-top: 6px; }
+.side .cap { font-size: 11.5px; color: #5f6b7a; margin-top: 22px; line-height: 1.5; }
+.main { position: absolute; left: 260px; right: 0; top: 52px; bottom: 0; padding: 26px 32px; }
+h1 { font-size: 26px; font-weight: 650; letter-spacing: -.01em; }
+.sub { color: #5f6b7a; font-size: 13px; margin: 2px 0 16px; }
+.kpis { display: flex; background: #fff; border: 1px solid #e3e6ec; border-radius: 12px; margin-bottom: 16px; }
+.kpi { flex: 1; padding: 14px 18px; border-left: 1px solid #e3e6ec; }
+.kpi:first-child { border-left: 0; }
+.kpi .l { font-size: 12.5px; color: #5f6b7a; }
+.kpi .v { font-size: 26px; font-weight: 650; letter-spacing: -.01em; font-variant-numeric: tabular-nums; }
+.kpi .d { font-size: 12px; color: #5f6b7a; }
+.d.up { color: #1f7a4d; } .d.dn { color: #b8463b; }
+.grid { display: grid; gap: 16px; }
+.card { background: #fff; border: 1px solid #e3e6ec; border-radius: 12px; padding: 16px 18px; overflow: hidden; }
+.card h3 { font-size: 15px; font-weight: 650; margin-bottom: 8px; }
+.card .note { font-size: 11.5px; color: #5f6b7a; margin-top: 6px; }
+table { width: 100%; border-collapse: collapse; font-size: 12.5px; }
+th { text-align: left; color: #5f6b7a; font-weight: 500; padding: 7px 8px; border-bottom: 1px solid #e3e6ec; }
+td { padding: 7px 8px; border-bottom: 1px solid #f0f2f5; font-variant-numeric: tabular-nums; }
+td.r, th.r { text-align: right; }
+.pill { display: inline-block; padding: 1px 9px; border-radius: 999px; font-size: 12px; font-weight: 600; }
+.g { background: #e7f3ec; color: #1f7a4d; } .y { background: #fbf1e4; color: #a8641a; } .rd { background: #f8e9e7; color: #b8463b; }
+.dock { position: absolute; right: 22px; bottom: 18px; display: flex; gap: 8px; }
+.dock span { padding: 8px 14px; border-radius: 999px; font-size: 13px; font-weight: 600; border: 1px solid #e3e6ec; background: #fff; }
+.dock span.p { background: #1f5fbf; color: #fff; border-color: #1f5fbf; }
+.stamp { position: absolute; right: 22px; top: 64px; z-index: 50; display: flex; align-items: center; gap: 8px; padding: 7px 14px;
+  border-radius: 999px; background: #fff3dc; border: 1.5px solid #a8641a; color: #7a4a00; font-weight: 700; font-size: 13px;
+  letter-spacing: .06em; text-transform: uppercase; box-shadow: 0 4px 14px rgba(168,100,26,.18); }
+.stamp small { font-weight: 500; letter-spacing: 0; text-transform: none; font-size: 12px; }
+svg text { font: 11px -apple-system, system-ui, sans-serif; fill: #5f6b7a; }
+</style></head><body><div style="position:absolute;inset:0;background:#eef5f8"></div><div style="position:absolute;width:700px;height:700px;left:-150px;top:-260px;border-radius:50%;background:radial-gradient(circle,rgba(94,184,191,.45),transparent 65%)"></div><div style="position:absolute;width:800px;height:800px;right:-200px;top:120px;border-radius:50%;background:radial-gradient(circle,rgba(14,116,144,.25),transparent 65%)"></div><div style="position:absolute;inset:0;background-image:linear-gradient(rgba(22,58,84,.05) 1px,transparent 1px),linear-gradient(90deg,rgba(22,58,84,.05) 1px,transparent 1px);background-size:48px 48px"></div><header style="position:absolute;left:0;right:0;top:0;height:60px;display:flex;align-items:center;justify-content:space-between;padding:0 48px;background:rgba(255,255,255,.55);backdrop-filter:blur(16px);border-bottom:1px solid rgba(14,116,144,.14)"><div style="display:flex;align-items:center;gap:28px"><b style="font-size:17px;color:#163a54">Data Central</b><span style="color:#33495a;font-size:14px">Internal</span><span style="color:#33495a;font-size:14px">Product</span><span style="color:#33495a;font-size:14px">My requests</span></div><span style="background:#163a54;color:#fff;border-radius:10px;padding:8px 14px;font-size:13.5px;font-weight:600">Request a dashboard</span></header><div style="position:absolute;left:48px;right:48px;top:88px;background:rgba(255,255,255,.55);backdrop-filter:blur(16px);border:1px solid rgba(255,255,255,.7);border-radius:20px;padding:28px 32px"><div style="font-size:12px;letter-spacing:.14em;color:#0e7490;font-weight:700">DATA PRODUCT CATALOG</div><div style="font-size:38px;font-weight:700;color:#0f2a3d;letter-spacing:-.02em;margin:4px 0">Data Central</div><div style="font-size:15.5px;color:#33495a">Every dashboard, report and agent, grouped by department. Open it where it lives.</div><div style="display:flex;gap:10px;margin-top:18px;max-width:760px"><div class="dc-search" style="flex:1;background:#fff;border:1px solid rgba(14,116,144,.2);border-radius:12px;padding:12px 14px;color:#7a8e9c;font-size:14px">Search dashboards, agents, reports</div><span class="dc-go" style="background:#163a54;color:#fff;border-radius:12px;padding:12px 20px;font-weight:600">Search</span></div><div style="display:flex;gap:28px;margin-top:16px;font-size:13.5px;color:#33495a"><span><b style="font-size:18px;color:#0f2a3d">34</b> data products</span><span><b style="font-size:18px;color:#0f2a3d">5</b> departments</span></div></div><div style="position:absolute;left:48px;top:372px;width:360px;background:rgba(255,255,255,.6);backdrop-filter:blur(16px);border:1px solid rgba(14,116,144,.16);border-radius:16px;padding:16px 20px"><div style="font-weight:650;color:#0f2a3d;margin-bottom:6px">Browse by department</div><div style="display:flex;justify-content:space-between;padding:9px 0;border-top:1px solid rgba(14,116,144,.12);font-size:14px;color:#0f2a3d"><span>Finance</span><span style="color:#50687a">9</span></div><div style="display:flex;justify-content:space-between;padding:9px 0;border-top:1px solid rgba(14,116,144,.12);font-size:14px;color:#0f2a3d"><span>Commercial</span><span style="color:#50687a">6</span></div><div style="display:flex;justify-content:space-between;padding:9px 0;border-top:1px solid rgba(14,116,144,.12);font-size:14px;color:#0f2a3d"><span>ITS</span><span style="color:#50687a">8</span></div><div style="display:flex;justify-content:space-between;padding:9px 0;border-top:1px solid rgba(14,116,144,.12);font-size:14px;color:#0f2a3d"><span>Tech Support</span><span style="color:#50687a">4</span></div><div style="display:flex;justify-content:space-between;padding:9px 0;border-top:1px solid rgba(14,116,144,.12);font-size:14px;color:#8aa0ae"><span>Services</span><span style="color:#50687a">coming soon</span></div></div><div style="position:absolute;left:432px;right:48px;top:372px"><div style="font-weight:650;color:#0f2a3d;margin-bottom:10px">Live now</div><div style="display:grid;grid-template-columns:repeat(3,1fr);gap:14px"><div class="dc-tile" style="background:rgba(255,255,255,.72);backdrop-filter:blur(16px);border:1px solid rgba(14,116,144,.16);border-radius:16px;padding:16px 18px;display:flex;flex-direction:column;gap:6px"><div style="display:flex;justify-content:space-between;align-items:center"><span style="width:34px;height:34px;border-radius:10px;background:#e0f2f5;display:grid;place-items:center;color:#0e7490;font-weight:700">▦</span><span style="font-size:11.5px;font-weight:600;color:#1f7a4d;background:#e7f3ec;border-radius:999px;padding:2px 9px">Certified</span></div><div style="font-weight:650;font-size:15px;color:#0f2a3d">Revenue retention</div><div style="font-size:12px;color:#50687a">Finance · Dashboard · Streamlit</div><div style="font-size:13px;color:#33495a;line-height:1.45">ARR, NRR and GRR from contract lines, with a frozen history.</div><div style="display:flex;justify-content:space-between;font-size:12.5px;margin-top:4px;color:#50687a"><span>Request access</span><span class="dc-open" style="color:#0e7490;font-weight:600">Open ↗</span></div></div><div class="dc-tile" style="background:rgba(255,255,255,.72);backdrop-filter:blur(16px);border:1px solid rgba(14,116,144,.16);border-radius:16px;padding:16px 18px;display:flex;flex-direction:column;gap:6px"><div style="display:flex;justify-content:space-between;align-items:center"><span style="width:34px;height:34px;border-radius:10px;background:#e0f2f5;display:grid;place-items:center;color:#0e7490;font-weight:700">▦</span><span style="font-size:11.5px;font-weight:600;color:#1f7a4d;background:#e7f3ec;border-radius:999px;padding:2px 9px">Certified</span></div><div style="font-weight:650;font-size:15px;color:#0f2a3d">Client 360</div><div style="font-size:12px;color:#50687a">Commercial · Dashboard · Streamlit</div><div style="font-size:13px;color:#33495a;line-height:1.45">Every client in one place: health, renewals, delivery, billing.</div><div style="display:flex;justify-content:space-between;font-size:12.5px;margin-top:4px;color:#50687a"><span>Request access</span><span class="dc-open" style="color:#0e7490;font-weight:600">Open ↗</span></div></div><div class="dc-tile" style="background:rgba(255,255,255,.72);backdrop-filter:blur(16px);border:1px solid rgba(14,116,144,.16);border-radius:16px;padding:16px 18px;display:flex;flex-direction:column;gap:6px"><div style="display:flex;justify-content:space-between;align-items:center"><span style="width:34px;height:34px;border-radius:10px;background:#e0f2f5;display:grid;place-items:center;color:#0e7490;font-weight:700">▦</span><span style="font-size:11.5px;font-weight:600;color:#1f7a4d;background:#e7f3ec;border-radius:999px;padding:2px 9px">Certified</span></div><div style="font-weight:650;font-size:15px;color:#0f2a3d">Commercial pipeline</div><div style="font-size:12px;color:#50687a">Commercial · Dashboard · Streamlit</div><div style="font-size:13px;color:#33495a;line-height:1.45">Weekly pipeline review without the spreadsheet.</div><div style="display:flex;justify-content:space-between;font-size:12.5px;margin-top:4px;color:#50687a"><span>Request access</span><span class="dc-open" style="color:#0e7490;font-weight:600">Open ↗</span></div></div><div class="dc-tile" style="background:rgba(255,255,255,.72);backdrop-filter:blur(16px);border:1px solid rgba(14,116,144,.16);border-radius:16px;padding:16px 18px;display:flex;flex-direction:column;gap:6px"><div style="display:flex;justify-content:space-between;align-items:center"><span style="width:34px;height:34px;border-radius:10px;background:#e0f2f5;display:grid;place-items:center;color:#0e7490;font-weight:700">▦</span><span style="font-size:11.5px;font-weight:600;color:#1f7a4d;background:#e7f3ec;border-radius:999px;padding:2px 9px">Certified</span></div><div style="font-weight:650;font-size:15px;color:#0f2a3d">Tech stack inventory</div><div style="font-size:12px;color:#50687a">ITS · Dashboard · Streamlit</div><div style="font-size:13px;color:#33495a;line-height:1.45">Software spend, renewals and SSO coverage.</div><div style="display:flex;justify-content:space-between;font-size:12.5px;margin-top:4px;color:#50687a"><span>Request access</span><span class="dc-open" style="color:#0e7490;font-weight:600">Open ↗</span></div></div><div class="dc-tile" style="background:rgba(255,255,255,.72);backdrop-filter:blur(16px);border:1px solid rgba(14,116,144,.16);border-radius:16px;padding:16px 18px;display:flex;flex-direction:column;gap:6px"><div style="display:flex;justify-content:space-between;align-items:center"><span style="width:34px;height:34px;border-radius:10px;background:#e0f2f5;display:grid;place-items:center;color:#0e7490;font-weight:700">▦</span><span style="font-size:11.5px;font-weight:600;color:#1f7a4d;background:#e7f3ec;border-radius:999px;padding:2px 9px">Certified</span></div><div style="font-weight:650;font-size:15px;color:#0f2a3d">Support tickets</div><div style="font-size:12px;color:#50687a">Tech Support · Dashboard · Streamlit</div><div style="font-size:13px;color:#33495a;line-height:1.45">Volume, backlog and time to close, by product.</div><div style="display:flex;justify-content:space-between;font-size:12.5px;margin-top:4px;color:#50687a"><span>Request access</span><span class="dc-open" style="color:#0e7490;font-weight:600">Open ↗</span></div></div><div class="dc-tile" style="background:rgba(255,255,255,.72);backdrop-filter:blur(16px);border:1px solid rgba(14,116,144,.16);border-radius:16px;padding:16px 18px;display:flex;flex-direction:column;gap:6px"><div style="display:flex;justify-content:space-between;align-items:center"><span style="width:34px;height:34px;border-radius:10px;background:#e0f2f5;display:grid;place-items:center;color:#0e7490;font-weight:700">▦</span><span style="font-size:11.5px;font-weight:600;color:#8a5300;background:#fff3dc;border-radius:999px;padding:2px 9px">In development</span></div><div style="font-weight:650;font-size:15px;color:#0f2a3d">Finance agent</div><div style="font-size:12px;color:#50687a">Finance · Agent · Cortex</div><div style="font-size:13px;color:#33495a;line-height:1.45">Ask finance questions in plain English.</div><div style="display:flex;justify-content:space-between;font-size:12.5px;margin-top:4px;color:#50687a"><span>Request access</span><span class="dc-open" style="color:#0e7490;font-weight:600">Open ↗</span></div></div></div></div><div class="stamp">Sample data <small>· illustrative, not real figures</small></div><style>
+.lv-cur { position: absolute; left: 0; top: 0; z-index: 90; pointer-events: none; }
+.lv-cur svg { display: block; filter: drop-shadow(0 2px 3px rgba(0,0,0,.25)); }
+.lv-cur i { position: absolute; left: -11px; top: -11px; width: 26px; height: 26px; border-radius: 50%; border: 2px solid #1f5fbf; opacity: 0; }
+.lv-tip { position: absolute; z-index: 80; background: #111827; color: #fff; border-radius: 10px; padding: 8px 12px; font-size: 12.5px;
+  line-height: 1.45; box-shadow: 0 10px 24px rgba(17,24,39,.25); white-space: nowrap; pointer-events: none; }
+.lv-tip b { font-size: 14px; }
+.lv-sw { display: inline-grid; } .lv-sw > * { grid-area: 1 / 1; }
+.stamp { z-index: 100 !important; }  /* the sample-data tag stays above every overlay */
+</style><script>
+const L = 11000, D = 800, EZ = 'cubic-bezier(.3,.7,.2,1)';
+const $ = (s, r = document) => r.querySelector(s), $$ = (s, r = document) => [...r.querySelectorAll(s)];
+const run = (el, k, o) => el && el.animate(k, o);
+// Hold `a` until t0, ease to `b` by t1, hold until t2, ease back to `a` by t3 (default: the reset at the loop's end).
+const win = (el, a, b, t0, t1, t2 = .93, t3 = .97, easing = EZ) => run(el, [
+  { ...a, offset: 0 }, { ...a, offset: t0, easing }, { ...b, offset: t1 }, { ...b, offset: t2, easing: 'ease-in-out' }, { ...a, offset: t3 }, { ...a, offset: 1 }],
+  { duration: L, delay: D, iterations: Infinity, fill: 'both' });
+const show = (el, t0, t1, dy = 6) => win(el, { opacity: 0, transform: `translateY(${dy}px)` }, { opacity: 1, transform: 'none' }, t0, t1);
+// Dims through a wrapper (SVG group, or each table cell) so it never fights an element's own fade-in.
+const dim = (el, t0, t1, to = .2) => { if (!el) return;
+  if (el.tagName === 'TR') return [...el.children].forEach(td => win(td, { opacity: 1 }, { opacity: to }, t0, t1));
+  if (el instanceof SVGElement) { const g = document.createElementNS('http://www.w3.org/2000/svg', 'g'); el.before(g); g.append(el); el = g; }
+  return win(el, { opacity: 1 }, { opacity: to }, t0, t1); };
+const muted = s => `<span style="color:#5f6b7a">${s}</span>`;
+const grow = (el, axis, origin, t0, t1) => { if (!el) return; el.style.transformBox = 'fill-box'; el.style.transformOrigin = origin;
+  return win(el, { transform: `scale${axis}(0)` }, { transform: 'none' }, t0, t1); };
+const draw = (p, t0, t1) => { if (!p) return; const n = p.getTotalLength(); p.style.strokeDasharray = `${n}px`;
+  return win(p, { strokeDashoffset: `${n}px` }, { strokeDashoffset: '0px' }, t0, t1, .93, .97, 'cubic-bezier(.4,0,.2,1)'); };
+const typeIn = (el, t0, t1) => win(el, { clipPath: 'inset(0 100% 0 0)' }, { clipPath: 'inset(0 0% 0 0)' }, t0, t1, .93, .97, `steps(${el.textContent.length}, end)`);
+const lines = (el, t0, t1, n = 4) => win(el, { clipPath: 'inset(0 0 100% 0)' }, { clipPath: 'inset(0 0 0% 0)' }, t0, t1, .93, .97, `steps(${n}, end)`);
+const intro = (els, step = 60, delay = 0) => els.forEach((el, i) => run(el, [{ opacity: 0, transform: 'translateY(10px)' }, { opacity: 1, transform: 'none' }],
+  { duration: 600, delay: delay + i * step, easing: EZ, fill: 'backwards' }));
+const swap = (el, html, t0, t1) => { if (!el) return; const a = document.createElement('span'), b = document.createElement('span'), w = document.createElement('span');
+  a.innerHTML = el.innerHTML; b.innerHTML = html; w.className = 'lv-sw'; w.append(a, b); el.replaceChildren(w);
+  win(a, { opacity: 1 }, { opacity: 0 }, t0, t1); win(b, { opacity: 0 }, { opacity: 1 }, t0, t1); return b; };
+const field = label => $$('.side .f').find(f => f.querySelector('label').textContent === label)?.querySelector('.sel span');
+const at = (el, dx = .5, dy = .5) => { const r = el.getBoundingClientRect(); return [r.left + dx * r.width, r.top + dy * r.height]; };
+const svgPt = (poly, i) => { const pts = poly.points, p = pts.getItem(i < 0 ? pts.numberOfItems + i : i), m = poly.getScreenCTM(); return [m.a * p.x + m.e, m.d * p.y + m.f]; };
+const tip = (x, y, html, t0, t1, t2, t3) => { const d = document.createElement('div'); d.className = 'lv-tip'; d.innerHTML = html;
+  document.body.append(d); d.style.left = x + 'px'; d.style.top = y + 'px'; win(d, { opacity: 0, transform: 'translateY(4px)' }, { opacity: 1, transform: 'none' }, t0, t1, t2, t3); return d; };
+// Cursor: steps are { p: [x, y], t, click }; it arrives at each point at time t and leaves shortly after.
+const cursor = steps => {
+  const c = document.createElement('div'); c.className = 'lv-cur';
+  c.innerHTML = '<i></i><svg width="26" height="26" viewBox="0 0 24 24"><path d="M4 2.5 19.5 12l-6.6 1.6 3.9 7.3-2.6 1.4-3.9-7.3L5.6 19Z" fill="#111827" stroke="#fff" stroke-width="1.4" stroke-linejoin="round"/></svg>';
+  document.body.append(c);
+  const tr = ([x, y]) => `translate(${x}px, ${y}px)`, start = [innerWidth - 80, innerHeight - 60], mv = 'cubic-bezier(.5,0,.2,1)';
+  const k = [{ transform: tr(start), opacity: 0, offset: 0 }, { transform: tr(start), opacity: 1, offset: Math.max(.01, steps[0].t - .14), easing: mv }];
+  steps.forEach((s, i) => { if (i) k.push({ transform: tr(steps[i - 1].p), opacity: 1, offset: Math.min(steps[i - 1].t + .03, s.t - .02), easing: mv });
+    k.push({ transform: tr(s.p), opacity: 1, offset: s.t }); });
+  const last = steps[steps.length - 1].p;
+  k.push({ transform: tr(last), opacity: 1, offset: .9 }, { transform: tr(last), opacity: 0, offset: .93 }, { transform: tr(last), opacity: 0, offset: 1 });
+  run(c, k, { duration: L, delay: D, iterations: Infinity, fill: 'both' });
+  const ring = [{ opacity: 0, transform: 'scale(.4)', offset: 0 }];
+  steps.filter(s => s.click).forEach(s => ring.push({ opacity: 0, transform: 'scale(.4)', offset: s.t }, { opacity: .9, transform: 'scale(.6)', offset: s.t + .004 },
+    { opacity: 0, transform: 'scale(1.6)', offset: s.t + .04 }));
+  ring.push({ opacity: 0, transform: 'scale(.4)', offset: 1 });
+  run(c.firstChild, ring, { duration: L, delay: D, iterations: Infinity, fill: 'both' });
+};
+const live = story => {
+  if (matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+  story();
+  // Test hook: #t=<ms> freezes every animation at that moment (used to check frames of the story).
+  const t = location.hash.match(/t=(\d+)/);
+  if (t) requestAnimationFrame(() => document.getAnimations().forEach(a => { a.pause(); a.currentTime = +t[1]; }));
+  // The site sends 'pause' / 'play' (WCAG 2.2.2: moving content longer than 5 s can be paused).
+  addEventListener('message', e => { if (e.source !== parent) return;
+    if (e.data === 'pause') document.getAnimations().forEach(a => a.pause());
+    if (e.data === 'play') document.getAnimations().forEach(a => a.play()); });
+};
+
+live(() => {
+  const tiles = $$('.dc-tile'); intro([tiles[0].parentElement], 0, 150);
+  const s = $('.dc-search');
+  s.innerHTML = `<span class="lv-sw"><span>${s.textContent}</span><span style="color:#0f2a3d;white-space:nowrap">pipeline</span></span>`;
+  const [ph, typed] = s.firstChild.children;
+  win(ph, { opacity: 1 }, { opacity: 0 }, .15, .155); typeIn(typed, .16, .25);
+  tiles.forEach((t, i) => i === 2 ? win(t, { boxShadow: '0 0 0 0 rgba(14,116,144,0)' }, { boxShadow: '0 0 0 3px rgba(14,116,144,.55)' }, .31, .35) : dim(t, .31, .35, .25));
+  const open = $$('.dc-open')[2];
+  const toast = tip(...at(open, -6.4, 1.9), 'Opening <b style="font-size:12.5px">Commercial pipeline</b> where it lives ↗', .47, .49, .58, .6);
+  const btn = $('header > span');
+  const m = document.createElement('div'); document.body.append(m);
+  Object.assign(m.style, { position: 'absolute', right: '48px', top: '112px', width: '420px', zIndex: 75, background: '#fff', borderRadius: '16px',
+    border: '1px solid rgba(14,116,144,.18)', boxShadow: '0 24px 60px rgba(15,42,61,.22)', padding: '20px 22px', color: '#0f2a3d', fontSize: '13.5px' });
+  m.innerHTML = '<div style="font-weight:700;font-size:17px;margin-bottom:12px">Request a dashboard</div>' +
+    '<div style="font-size:12px;color:#50687a;margin-bottom:5px">What do you need?</div>' +
+    '<div class="rq" style="border:1px solid rgba(14,116,144,.25);border-radius:10px;padding:10px 12px;min-height:40px"><span style="white-space:nowrap">Weekly pipeline by region</span></div>' +
+    '<div class="sim" style="margin-top:14px;background:#eef7f9;border-radius:10px;padding:10px 12px"><div style="font-size:12px;color:#0e7490;font-weight:700;margin-bottom:4px">ALREADY LIVE, MAYBE ONE OF THESE?</div>' +
+    '<div>Commercial pipeline · filter by region</div><div>Client 360 · accounts by region</div></div>' +
+    '<div style="display:flex;justify-content:flex-end;gap:8px;margin-top:14px"><span style="padding:8px 14px;border-radius:10px;border:1px solid rgba(14,116,144,.25)">Cancel</span>' +
+    '<span class="send" style="padding:8px 14px;border-radius:10px;background:#163a54;color:#fff;font-weight:600">Send request</span></div>';
+  win(m, { opacity: 0, transform: 'translateY(-6px)' }, { opacity: 1, transform: 'none' }, .66, .69);
+  typeIn($('.rq span', m), .7, .78); show($('.sim', m), .79, .82);
+  const sent = tip(...at($('.send', m), -1.05, 2.1), '✓ Request filed in Jira', .89, .9);
+  cursor([{ p: at(s, .3, .55), t: .13, click: true }, { p: at($('.dc-go'), .5, .55), t: .28, click: true }, { p: at(open, .5, .6), t: .46, click: true },
+          { p: at(btn, .5, .6), t: .64, click: true }, { p: at($('.send', m), .5, .6), t: .87, click: true }]);
+});</script></body></html>

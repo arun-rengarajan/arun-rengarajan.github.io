@@ -1,0 +1,118 @@
+<!doctype html><html><head><meta charset="utf-8"><style>
+* { box-sizing: border-box; margin: 0; padding: 0; }
+body { width: 1440px; height: 900px; overflow: hidden; background: #f5f6f8; color: #111827;
+  font: 14px/1.45 -apple-system, BlinkMacSystemFont, "SF Pro Text", "Inter", system-ui, sans-serif; position: relative; }
+.num { font-variant-numeric: tabular-nums; }
+.top { position: absolute; left: 260px; right: 0; top: 0; height: 52px; background: rgba(255,255,255,.72); backdrop-filter: blur(16px);
+  border-bottom: 1px solid #e3e6ec; display: flex; align-items: center; gap: 6px; padding: 0 28px; }
+.tab { padding: 6px 12px; border-radius: 8px; color: #5f6b7a; font-weight: 500; font-size: 13.5px; }
+.tab.on { background: #eef0f4; color: #111827; }
+.side { position: absolute; left: 0; top: 0; bottom: 0; width: 260px; background: #eef1f6; border-right: 1px solid #e3e6ec; padding: 26px 20px; }
+.side h4 { font-size: 15px; font-weight: 650; margin: 0 0 12px; }
+.side h4 + .f { margin-top: 0; }
+.f { margin: 0 0 14px; }
+.f label { display: block; font-size: 12.5px; color: #111827; margin-bottom: 5px; }
+.f .sel { background: #fff; border: 1px solid #e3e6ec; border-radius: 8px; padding: 8px 10px; font-size: 13px; color: #5f6b7a; display: flex; justify-content: space-between; }
+.side .reset { border: 1px solid #e3e6ec; border-radius: 8px; padding: 8px; text-align: center; color: #5f6b7a; font-size: 13px; margin-top: 6px; }
+.side .cap { font-size: 11.5px; color: #5f6b7a; margin-top: 22px; line-height: 1.5; }
+.main { position: absolute; left: 260px; right: 0; top: 52px; bottom: 0; padding: 26px 32px; }
+h1 { font-size: 26px; font-weight: 650; letter-spacing: -.01em; }
+.sub { color: #5f6b7a; font-size: 13px; margin: 2px 0 16px; }
+.kpis { display: flex; background: #fff; border: 1px solid #e3e6ec; border-radius: 12px; margin-bottom: 16px; }
+.kpi { flex: 1; padding: 14px 18px; border-left: 1px solid #e3e6ec; }
+.kpi:first-child { border-left: 0; }
+.kpi .l { font-size: 12.5px; color: #5f6b7a; }
+.kpi .v { font-size: 26px; font-weight: 650; letter-spacing: -.01em; font-variant-numeric: tabular-nums; }
+.kpi .d { font-size: 12px; color: #5f6b7a; }
+.d.up { color: #1f7a4d; } .d.dn { color: #b8463b; }
+.grid { display: grid; gap: 16px; }
+.card { background: #fff; border: 1px solid #e3e6ec; border-radius: 12px; padding: 16px 18px; overflow: hidden; }
+.card h3 { font-size: 15px; font-weight: 650; margin-bottom: 8px; }
+.card .note { font-size: 11.5px; color: #5f6b7a; margin-top: 6px; }
+table { width: 100%; border-collapse: collapse; font-size: 12.5px; }
+th { text-align: left; color: #5f6b7a; font-weight: 500; padding: 7px 8px; border-bottom: 1px solid #e3e6ec; }
+td { padding: 7px 8px; border-bottom: 1px solid #f0f2f5; font-variant-numeric: tabular-nums; }
+td.r, th.r { text-align: right; }
+.pill { display: inline-block; padding: 1px 9px; border-radius: 999px; font-size: 12px; font-weight: 600; }
+.g { background: #e7f3ec; color: #1f7a4d; } .y { background: #fbf1e4; color: #a8641a; } .rd { background: #f8e9e7; color: #b8463b; }
+.dock { position: absolute; right: 22px; bottom: 18px; display: flex; gap: 8px; }
+.dock span { padding: 8px 14px; border-radius: 999px; font-size: 13px; font-weight: 600; border: 1px solid #e3e6ec; background: #fff; }
+.dock span.p { background: #1f5fbf; color: #fff; border-color: #1f5fbf; }
+.stamp { position: absolute; right: 22px; top: 64px; z-index: 50; display: flex; align-items: center; gap: 8px; padding: 7px 14px;
+  border-radius: 999px; background: #fff3dc; border: 1.5px solid #a8641a; color: #7a4a00; font-weight: 700; font-size: 13px;
+  letter-spacing: .06em; text-transform: uppercase; box-shadow: 0 4px 14px rgba(168,100,26,.18); }
+.stamp small { font-weight: 500; letter-spacing: 0; text-transform: none; font-size: 12px; }
+svg text { font: 11px -apple-system, system-ui, sans-serif; fill: #5f6b7a; }
+</style></head><body><nav class="top"><span class="tab">Overview</span><span class="tab">Accounts</span><span class="tab on">Account profile</span><span class="tab">Renewals</span></nav><aside class="side"><h4>My book</h4><div class="f"><label>Client manager</label><div class="sel"><span>All client managers</span><span>▾</span></div></div><h4>Filters</h4><div class="f"><label>Country</label><div class="sel"><span>All countries</span><span>▾</span></div></div><div class="f"><label>Health band</label><div class="sel"><span>All bands</span><span>▾</span></div></div><div class="f"><label>Renewal within</label><div class="sel"><span><span class="sw"><span class="sa">180 days</span><span class="sb">90 days</span></span></span><span>▾</span></div></div><div class="reset">Reset filters</div><div class="cap">Scored every morning at 6:00 from finance, support and project data.</div></aside><main class="main"><h1>Account health</h1><div class="sub">214 accounts scored this morning</div><div class="kpis"><div class="kpi"><div class="l">Accounts scored</div><div class="v">214</div><div class="d">3 areas each</div></div><div class="kpi"><div class="l">Green</div><div class="v">46%</div><div class="d up">+4 pts this quarter</div></div><div class="kpi"><div class="l">Yellow</div><div class="v">31%</div><div class="d dn">−1 pt</div></div><div class="kpi"><div class="l">Red</div><div class="v">23%</div><div class="d dn">−3 pts this quarter</div></div><div class="kpi"><div class="l">Priority accounts</div><div class="v">12</div><div class="d">renew in 180 days with a Red area</div></div></div><div class="grid" style="grid-template-columns:1.25fr 1fr"><div class="card"><h3>12 priority accounts renew in the next 180 days</h3><table><tr><th>Account</th><th>Score</th><th class="r">Finance</th><th class="r">Tech Support</th><th class="r">Services</th><th class="r">Renews in</th></tr><tr class="near"><td>Proseware Health</td><td><span class="pill rd">47</span></td><td class="r"><span style="color:#b8463b;font-weight:600">32</span></td><td class="r"><span style="color:#b8463b;font-weight:600">59</span></td><td class="r"><span style="color:#b8463b;font-weight:600">52</span></td><td class="r">88 days</td></tr><tr class="near"><td>Tailspin Care</td><td><span class="pill rd">53</span></td><td class="r"><span style="color:#b8463b;font-weight:600">43</span></td><td class="r"><span style="color:#a8641a;font-weight:600">63</span></td><td class="r"><span style="color:#b8463b;font-weight:600">55</span></td><td class="r">67 days</td></tr><tr class="fab near"><td>Fabrikam Medical</td><td><span class="pill rd">54</span></td><td class="r"><span style="color:#a8641a;font-weight:600">72</span></td><td class="r"><span style="color:#b8463b;font-weight:600">41</span></td><td class="r"><span style="color:#a8641a;font-weight:600">66</span></td><td class="r">88 days</td></tr><tr class="far"><td>Woodgrove Hospitals</td><td><span class="pill rd">54</span></td><td class="r"><span style="color:#a8641a;font-weight:600">69</span></td><td class="r"><span style="color:#b8463b;font-weight:600">49</span></td><td class="r"><span style="color:#b8463b;font-weight:600">36</span></td><td class="r">176 days</td></tr><tr class="far"><td>Adventure Works Health</td><td><span class="pill rd">54</span></td><td class="r"><span style="color:#b8463b;font-weight:600">39</span></td><td class="r"><span style="color:#a8641a;font-weight:600">60</span></td><td class="r"><span style="color:#a8641a;font-weight:600">71</span></td><td class="r">119 days</td></tr><tr class="far"><td>Northwind Health</td><td><span class="pill rd">58</span></td><td class="r"><span style="color:#1f7a4d;font-weight:600">81</span></td><td class="r"><span style="color:#b8463b;font-weight:600">40</span></td><td class="r"><span style="color:#b8463b;font-weight:600">48</span></td><td class="r">119 days</td></tr><tr class="far"><td>Litware Medical</td><td><span class="pill rd">59</span></td><td class="r"><span style="color:#1f7a4d;font-weight:600">83</span></td><td class="r"><span style="color:#b8463b;font-weight:600">49</span></td><td class="r"><span style="color:#a8641a;font-weight:600">68</span></td><td class="r">151 days</td></tr><tr class="near"><td>Alpine Ski Clinics</td><td><span class="pill rd">59</span></td><td class="r"><span style="color:#b8463b;font-weight:600">48</span></td><td class="r"><span style="color:#a8641a;font-weight:600">79</span></td><td class="r"><span style="color:#1f7a4d;font-weight:600">83</span></td><td class="r">42 days</td></tr></table><div style="margin-top:14px"><h3 style="font-size:13.5px">Bands today</h3><div style="display:flex;height:16px;border-radius:6px;overflow:hidden;margin:10px 0 6px"><div style="width:46%;background:#1f7a4d"></div><div style="width:31%;background:#a8641a"></div><div style="width:23%;background:#b8463b"></div></div><div style="display:flex;justify-content:space-between;font-size:12px;color:#5f6b7a"><span>Green 46%</span><span>Yellow 31%</span><span>Red 23%</span></div></div></div><div class="card prof"><div style="display:flex;justify-content:space-between;align-items:center"><h3 style="font-size:17px">Fabrikam Medical</h3><span class="pill rd" style="font-size:15px;padding:3px 12px">54 · Red</span></div><div style="font-size:12px;color:#5f6b7a;margin-bottom:6px">Confidence: High · renews in 88 days · priority account</div><div style="display:flex;align-items:center;gap:10px;margin:7px 0"><div style="width:96px;font-size:12.5px">Finance</div><div style="flex:1;height:10px;background:#eef0f4;border-radius:5px"><div class="bar" style="width:72%;height:10px;border-radius:5px;background:#a8641a"></div></div><div style="width:66px;text-align:right;font-size:12.5px"><b>72</b> <span style="color:#5f6b7a">· 40%</span></div></div><div style="display:flex;align-items:center;gap:10px;margin:7px 0"><div style="width:96px;font-size:12.5px">Tech Support</div><div style="flex:1;height:10px;background:#eef0f4;border-radius:5px"><div class="bar" style="width:41%;height:10px;border-radius:5px;background:#b8463b"></div></div><div style="width:66px;text-align:right;font-size:12.5px"><b>41</b> <span style="color:#5f6b7a">· 40%</span></div></div><div style="display:flex;align-items:center;gap:10px;margin:7px 0"><div style="width:96px;font-size:12.5px">Services</div><div style="flex:1;height:10px;background:#eef0f4;border-radius:5px"><div class="bar" style="width:66%;height:10px;border-radius:5px;background:#a8641a"></div></div><div style="width:66px;text-align:right;font-size:12.5px"><b>66</b> <span style="color:#5f6b7a">· 20%</span></div></div><div class="summ" style="background:#f5f8fd;border:1px solid #e3e6ec;border-radius:10px;padding:12px 14px;margin-top:12px;font-size:13px"><b>Summary</b><br>Tech Support is Red: tickets per 100 beds doubled in 90 days and two serious issues are still open. Finance is steady, but one product line is still not live 7 months after signing. The overall score is capped at 59 because one area is Red.</div><div style="margin-top:12px;font-size:13px"><b>Next steps</b><ol style="margin:6px 0 0 18px;line-height:1.6"><li>Support lead: review the two open severity-2 tickets this week.</li><li>Client manager: book a renewal call before the 90-day mark.</li><li>Services: agree a go-live date for the remaining product line.</li></ol></div></div></div></main><div class="dock"><span>Feedback</span><span class="p">Ask the data</span></div><div class="stamp">Sample data <small>· illustrative, not real figures</small></div><style>
+:root { --loop: 11s; --start: 1.2s; }
+.sw { display: inline-grid; } .sw > span { grid-area: 1 / 1; } .sb { opacity: 0; }
+.kpi { animation: rise .6s cubic-bezier(.2,.7,.2,1) both; }
+.kpi:nth-child(2) { animation-delay: .06s; } .kpi:nth-child(3) { animation-delay: .12s; }
+.kpi:nth-child(4) { animation-delay: .18s; } .kpi:nth-child(5) { animation-delay: .24s; }
+.grid > .card:first-child { animation: rise .7s .25s cubic-bezier(.2,.7,.2,1) both; }
+@keyframes rise { from { opacity: 0; transform: translateY(10px); } }
+.loop { animation-duration: var(--loop); animation-delay: var(--start); animation-iteration-count: infinite; animation-fill-mode: both; }
+.sa { animation-name: sa; } .sb { animation-name: sb; }
+@keyframes sa { 0%, 22% { opacity: 1; } 23%, 93% { opacity: 0; } 94%, 100% { opacity: 1; } }
+@keyframes sb { 0%, 22% { opacity: 0; } 23%, 93% { opacity: 1; } 94%, 100% { opacity: 0; } }
+tr.far { animation-name: far; }
+@keyframes far { 0%, 23% { opacity: 1; } 28%, 92% { opacity: .16; } 97%, 100% { opacity: 1; } }
+tr.fab td { animation-name: pick; }
+@keyframes pick { 0%, 41% { background: transparent; } 43%, 92% { background: #e6effc; } 96%, 100% { background: transparent; } }
+.prof { position: relative; }
+.prof > :not(.ph) { animation-name: show; }
+@keyframes show { 0%, 44% { opacity: 0; } 49%, 92% { opacity: 1; } 96%, 100% { opacity: 0; } }
+.ph { position: absolute; inset: 0; display: grid; place-items: center; color: #8a94a3; font-size: 13.5px; opacity: 0; animation-name: ph; }
+@keyframes ph { 0%, 42% { opacity: 1; } 45%, 95% { opacity: 0; } 98%, 100% { opacity: 1; } }
+.prof .bar { transform-origin: left; animation-name: fill; }
+@keyframes fill { 0%, 48% { transform: scaleX(0); animation-timing-function: cubic-bezier(.3,.7,.2,1); } 58%, 100% { transform: scaleX(1); } }
+.prof > .summ { animation-name: write; }
+@keyframes write { 0%, 57% { clip-path: inset(0 0 100% 0); animation-timing-function: steps(5, end); } 70%, 100% { clip-path: inset(0 0 0 0); } }
+.prof li { animation-name: step1; }
+.prof li:nth-child(2) { animation-name: step2; } .prof li:nth-child(3) { animation-name: step3; }
+@keyframes step1 { 0%, 71% { opacity: 0; transform: translateY(5px); } 74%, 100% { opacity: 1; transform: none; } }
+@keyframes step2 { 0%, 76% { opacity: 0; transform: translateY(5px); } 79%, 100% { opacity: 1; transform: none; } }
+@keyframes step3 { 0%, 81% { opacity: 0; transform: translateY(5px); } 84%, 100% { opacity: 1; transform: none; } }
+.cursor { position: absolute; left: 0; top: 0; z-index: 60; width: 26px; height: 26px; pointer-events: none; animation-name: move; }
+.cursor svg { display: block; filter: drop-shadow(0 2px 3px rgba(0,0,0,.25)); }
+.cursor i { position: absolute; left: -11px; top: -11px; width: 26px; height: 26px; border-radius: 50%; border: 2px solid #1f5fbf;
+  opacity: 0; animation-name: tap; }
+@keyframes move {
+  0% { opacity: 0; transform: translate(var(--x0), var(--y0)); }
+  8% { opacity: 1; transform: translate(var(--x0), var(--y0)); animation-timing-function: cubic-bezier(.5,0,.2,1); }
+  20% { transform: translate(var(--x1), var(--y1)); }
+  21% { transform: translate(var(--x1), var(--y1)) scale(.86); } 23% { transform: translate(var(--x1), var(--y1)); }
+  28% { transform: translate(var(--x1), var(--y1)); animation-timing-function: cubic-bezier(.5,0,.2,1); }
+  40% { transform: translate(var(--x2), var(--y2)); }
+  41% { transform: translate(var(--x2), var(--y2)) scale(.86); } 43% { transform: translate(var(--x2), var(--y2)); animation-timing-function: cubic-bezier(.5,0,.2,1); }
+  56% { opacity: 1; transform: translate(var(--x3), var(--y3)); }
+  88% { opacity: 1; transform: translate(var(--x3), var(--y3)); }
+  92%, 100% { opacity: 0; transform: translate(var(--x3), var(--y3)); }
+}
+@keyframes tap { 0%, 20% { opacity: 0; transform: scale(.4); } 21% { opacity: .9; transform: scale(.6); } 25% { opacity: 0; transform: scale(1.5); }
+  26%, 40% { opacity: 0; transform: scale(.4); } 41% { opacity: .9; transform: scale(.6); } 45%, 100% { opacity: 0; transform: scale(1.5); } }
+html.paused *, html.paused *::before, html.paused *::after { animation-play-state: paused !important; }
+@media (prefers-reduced-motion: reduce) { *, *::before, *::after { animation: none !important; } .cursor { display: none; } .sb { opacity: 0; } }
+</style>
+<div class="cursor loop" aria-hidden="true"><i class="loop"></i><svg width="26" height="26" viewBox="0 0 24 24"><path d="M4 2.5 19.5 12l-6.6 1.6 3.9 7.3-2.6 1.4-3.9-7.3L5.6 19Z" fill="#111827" stroke="#fff" stroke-width="1.4" stroke-linejoin="round"/></svg></div>
+<script>
+(() => {
+  // Classes that drive the loop, added here so the static render (no script) stays plain.
+  document.querySelectorAll('.sa, .sb, tr.far, tr.fab td, .prof > *, .prof .bar, .summ, .prof li').forEach(e => e.classList.add('loop'));
+  const prof = document.querySelector('.prof');
+  const ph = document.createElement('div'); ph.className = 'ph loop'; ph.textContent = 'Select an account to see its profile';
+  prof.appendChild(ph);
+  // Cursor waypoints come from the real layout, so the story survives layout changes.
+  const c = document.querySelector('.cursor').style;
+  const at = (el, dx, dy) => { const r = el.getBoundingClientRect(); return [r.left + dx * r.width, r.top + dy * r.height]; };
+  const pts = [[innerWidth - 90, innerHeight - 70], at(document.querySelector('.sw').closest('.sel'), .55, .55),
+               at(document.querySelector('tr.fab td'), .5, .6), at(prof, .78, .93)];
+  pts.forEach(([x, y], i) => { c.setProperty('--x' + i, x + 'px'); c.setProperty('--y' + i, y + 'px'); });
+  // The site sends 'pause' / 'play' (WCAG 2.2.2: moving content longer than 5 s can be paused).
+  // Test hook: #t=<ms> freezes every animation at that moment (used to check frames of the story).
+  const t = location.hash.match(/t=(\d+)/);
+  if (t) requestAnimationFrame(() => document.getAnimations().forEach(a => { a.pause(); a.currentTime = +t[1]; }));
+  addEventListener('message', e => { if (e.source === parent && (e.data === 'pause' || e.data === 'play'))
+    document.documentElement.classList.toggle('paused', e.data === 'pause'); });
+})();
+</script></body></html>

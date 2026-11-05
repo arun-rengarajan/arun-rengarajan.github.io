@@ -1,0 +1,128 @@
+<!doctype html><html><head><meta charset="utf-8"><style>
+* { box-sizing: border-box; margin: 0; padding: 0; }
+body { width: 1440px; height: 900px; overflow: hidden; background: #f5f6f8; color: #111827;
+  font: 14px/1.45 -apple-system, BlinkMacSystemFont, "SF Pro Text", "Inter", system-ui, sans-serif; position: relative; }
+.num { font-variant-numeric: tabular-nums; }
+.top { position: absolute; left: 260px; right: 0; top: 0; height: 52px; background: rgba(255,255,255,.72); backdrop-filter: blur(16px);
+  border-bottom: 1px solid #e3e6ec; display: flex; align-items: center; gap: 6px; padding: 0 28px; }
+.tab { padding: 6px 12px; border-radius: 8px; color: #5f6b7a; font-weight: 500; font-size: 13.5px; }
+.tab.on { background: #eef0f4; color: #111827; }
+.side { position: absolute; left: 0; top: 0; bottom: 0; width: 260px; background: #eef1f6; border-right: 1px solid #e3e6ec; padding: 26px 20px; }
+.side h4 { font-size: 15px; font-weight: 650; margin: 0 0 12px; }
+.side h4 + .f { margin-top: 0; }
+.f { margin: 0 0 14px; }
+.f label { display: block; font-size: 12.5px; color: #111827; margin-bottom: 5px; }
+.f .sel { background: #fff; border: 1px solid #e3e6ec; border-radius: 8px; padding: 8px 10px; font-size: 13px; color: #5f6b7a; display: flex; justify-content: space-between; }
+.side .reset { border: 1px solid #e3e6ec; border-radius: 8px; padding: 8px; text-align: center; color: #5f6b7a; font-size: 13px; margin-top: 6px; }
+.side .cap { font-size: 11.5px; color: #5f6b7a; margin-top: 22px; line-height: 1.5; }
+.main { position: absolute; left: 260px; right: 0; top: 52px; bottom: 0; padding: 26px 32px; }
+h1 { font-size: 26px; font-weight: 650; letter-spacing: -.01em; }
+.sub { color: #5f6b7a; font-size: 13px; margin: 2px 0 16px; }
+.kpis { display: flex; background: #fff; border: 1px solid #e3e6ec; border-radius: 12px; margin-bottom: 16px; }
+.kpi { flex: 1; padding: 14px 18px; border-left: 1px solid #e3e6ec; }
+.kpi:first-child { border-left: 0; }
+.kpi .l { font-size: 12.5px; color: #5f6b7a; }
+.kpi .v { font-size: 26px; font-weight: 650; letter-spacing: -.01em; font-variant-numeric: tabular-nums; }
+.kpi .d { font-size: 12px; color: #5f6b7a; }
+.d.up { color: #1f7a4d; } .d.dn { color: #b8463b; }
+.grid { display: grid; gap: 16px; }
+.card { background: #fff; border: 1px solid #e3e6ec; border-radius: 12px; padding: 16px 18px; overflow: hidden; }
+.card h3 { font-size: 15px; font-weight: 650; margin-bottom: 8px; }
+.card .note { font-size: 11.5px; color: #5f6b7a; margin-top: 6px; }
+table { width: 100%; border-collapse: collapse; font-size: 12.5px; }
+th { text-align: left; color: #5f6b7a; font-weight: 500; padding: 7px 8px; border-bottom: 1px solid #e3e6ec; }
+td { padding: 7px 8px; border-bottom: 1px solid #f0f2f5; font-variant-numeric: tabular-nums; }
+td.r, th.r { text-align: right; }
+.pill { display: inline-block; padding: 1px 9px; border-radius: 999px; font-size: 12px; font-weight: 600; }
+.g { background: #e7f3ec; color: #1f7a4d; } .y { background: #fbf1e4; color: #a8641a; } .rd { background: #f8e9e7; color: #b8463b; }
+.dock { position: absolute; right: 22px; bottom: 18px; display: flex; gap: 8px; }
+.dock span { padding: 8px 14px; border-radius: 999px; font-size: 13px; font-weight: 600; border: 1px solid #e3e6ec; background: #fff; }
+.dock span.p { background: #1f5fbf; color: #fff; border-color: #1f5fbf; }
+.stamp { position: absolute; right: 22px; top: 64px; z-index: 50; display: flex; align-items: center; gap: 8px; padding: 7px 14px;
+  border-radius: 999px; background: #fff3dc; border: 1.5px solid #a8641a; color: #7a4a00; font-weight: 700; font-size: 13px;
+  letter-spacing: .06em; text-transform: uppercase; box-shadow: 0 4px 14px rgba(168,100,26,.18); }
+.stamp small { font-weight: 500; letter-spacing: 0; text-transform: none; font-size: 12px; }
+svg text { font: 11px -apple-system, system-ui, sans-serif; fill: #5f6b7a; }
+</style></head><body><nav class="top"><span class="tab on">Overview</span><span class="tab">Products</span><span class="tab">Product detail</span><span class="tab">Contracts and renewals</span><span class="tab">SSO and access</span></nav><aside class="side"><h4>Period</h4><div class="f"><label>Window</label><div class="sel"><span>Last 12 months</span><span>▾</span></div></div><h4>Filters</h4><div class="f"><label>Cost basis</label><div class="sel"><span>Spread over service</span><span>▾</span></div></div><div class="f"><label>Spend type</label><div class="sel"><span>Software and SaaS</span><span>▾</span></div></div><div class="f"><label>Category</label><div class="sel"><span>All categories</span><span>▾</span></div></div><div class="f"><label>Department</label><div class="sel"><span>All departments</span><span>▾</span></div></div><div class="reset">Reset filters</div><div class="cap">Vendor bills and POs from the ERP; SSO apps and licences from the identity provider.</div></aside><main class="main"><h1>Tech stack inventory</h1><div class="sub">Every bill line mapped to a product</div><div class="kpis"><div class="kpi"><div class="l">Technology cost</div><div class="v">$3.1M</div><div class="d">last 12 months</div></div><div class="kpi"><div class="l">Products with spend</div><div class="v">118</div><div class="d">of 164 in the catalog</div></div><div class="kpi"><div class="l">Still to bill on POs</div><div class="v">$410K</div><div class="d">on 23 purchase orders</div></div><div class="kpi"><div class="l">Renewals in 90 days</div><div class="v">9</div><div class="d">$382K annual value</div></div><div class="kpi"><div class="l">SSO coverage</div><div class="v">81%</div><div class="d up">+6 pts this year</div></div></div><div class="grid" style="grid-template-columns:1.2fr 1fr"><div class="card"><h3>Monthly technology cost</h3><svg viewBox="0 0 590 230" width="100%" style="display:block"><line x1="48" x2="584" y1="208.0" y2="208.0" stroke="#eef0f4"/><text x="42" y="212.0" text-anchor="end">$0K</text><line x1="48" x2="584" y1="159.5" y2="159.5" stroke="#eef0f4"/><text x="42" y="163.5" text-anchor="end">$100K</text><line x1="48" x2="584" y1="111.0" y2="111.0" stroke="#eef0f4"/><text x="42" y="115.0" text-anchor="end">$200K</text><line x1="48" x2="584" y1="62.5" y2="62.5" stroke="#eef0f4"/><text x="42" y="66.5" text-anchor="end">$300K</text><line x1="48" x2="584" y1="14.0" y2="14.0" stroke="#eef0f4"/><text x="42" y="18.0" text-anchor="end">$400K</text><rect x="56.0" y="84.3" width="28.6" height="123.7" rx="3" fill="#1f5fbf"/><text x="70.3" y="225" text-anchor="middle">Nov</text><rect x="100.7" y="84.1" width="28.6" height="123.9" rx="3" fill="#1f5fbf"/><text x="115.0" y="225" text-anchor="middle">Dec</text><rect x="145.4" y="81.5" width="28.6" height="126.5" rx="3" fill="#1f5fbf"/><text x="159.7" y="225" text-anchor="middle">Jan</text><rect x="190.0" y="85.9" width="28.6" height="122.1" rx="3" fill="#1f5fbf"/><text x="204.3" y="225" text-anchor="middle">Feb</text><rect x="234.7" y="80.4" width="28.6" height="127.6" rx="3" fill="#1f5fbf"/><text x="249.0" y="225" text-anchor="middle">Mar</text><rect x="279.4" y="74.0" width="28.6" height="134.0" rx="3" fill="#1f5fbf"/><text x="293.7" y="225" text-anchor="middle">Apr</text><rect x="324.0" y="76.6" width="28.6" height="131.4" rx="3" fill="#1f5fbf"/><text x="338.3" y="225" text-anchor="middle">May</text><rect x="368.7" y="79.6" width="28.6" height="128.4" rx="3" fill="#1f5fbf"/><text x="383.0" y="225" text-anchor="middle">Jun</text><rect x="413.4" y="82.9" width="28.6" height="125.1" rx="3" fill="#1f5fbf"/><text x="427.7" y="225" text-anchor="middle">Jul</text><rect x="458.0" y="88.6" width="28.6" height="119.4" rx="3" fill="#1f5fbf"/><text x="472.3" y="225" text-anchor="middle">Aug</text><rect x="502.7" y="66.4" width="28.6" height="141.6" rx="3" fill="#1f5fbf"/><text x="517.0" y="225" text-anchor="middle">Sep</text><rect x="547.4" y="86.9" width="28.6" height="121.1" rx="3" fill="#1f5fbf"/><text x="561.7" y="225" text-anchor="middle">Oct</text><line x1="48" x2="584" y1="80.9" y2="80.9" stroke="#111827" stroke-dasharray="5 4" opacity=".55"/><text x="582" y="75.9" text-anchor="end" style="fill:#111827">Monthly average $262K</text></svg></div><div class="card"><h3>The top 3 products are 40% of spend</h3><svg viewBox="0 0 480 217" width="100%" style="display:block"><text x="142" y="15" text-anchor="end" style="fill:#111827">CRM platform</text><rect x="150" y="4" width="260.0" height="21" rx="3" fill="#1f5fbf"/><text x="416.0" y="15" style="fill:#111827;font-weight:600">$412K</text><text x="142" y="46" text-anchor="end" style="fill:#111827">ERP suite</text><rect x="150" y="35" width="230.3" height="21" rx="3" fill="#1f5fbf"/><text x="386.3" y="46" style="fill:#111827;font-weight:600">$365K</text><text x="142" y="77" text-anchor="end" style="fill:#111827">Cloud data platform</text><rect x="150" y="66" width="188.1" height="21" rx="3" fill="#1f5fbf"/><text x="344.1" y="77" style="fill:#111827;font-weight:600">$298K</text><text x="142" y="108" text-anchor="end" style="fill:#111827">Video meetings</text><rect x="150" y="97" width="98.4" height="21" rx="3" fill="#1f5fbf"/><text x="254.4" y="108" style="fill:#111827;font-weight:600">$156K</text><text x="142" y="139" text-anchor="end" style="fill:#111827">Design suite</text><rect x="150" y="128" width="76.4" height="21" rx="3" fill="#1f5fbf"/><text x="232.4" y="139" style="fill:#111827;font-weight:600">$121K</text><text x="142" y="170" text-anchor="end" style="fill:#111827">Project tracking</text><rect x="150" y="159" width="61.8" height="21" rx="3" fill="#1f5fbf"/><text x="217.8" y="170" style="fill:#111827;font-weight:600">$98K</text><text x="142" y="201" text-anchor="end" style="fill:#111827">Endpoint security</text><rect x="150" y="190" width="54.9" height="21" rx="3" fill="#1f5fbf"/><text x="210.9" y="201" style="fill:#111827;font-weight:600">$87K</text></svg></div><div class="card" style="grid-column:span 2"><h3>Coming up for renewal</h3><table><tr><th>Product</th><th>Renews</th><th class="r">Annual cost</th><th>SSO</th></tr><tr><td>Video meetings</td><td>Dec 14, 2026</td><td class="r">$156K</td><td><span class="pill g">Yes</span></td></tr><tr><td>Design suite</td><td>Jan 3, 2027</td><td class="r">$121K</td><td><span class="pill g">Yes</span></td></tr><tr><td>Survey tool</td><td>Jan 19, 2027</td><td class="r">$18K</td><td><span class="pill y">No</span></td></tr><tr><td>Password manager</td><td>Jan 28, 2027</td><td class="r">$22K</td><td><span class="pill g">Yes</span></td></tr></table></div></div></main><div class="dock"><span>Feedback</span><span class="p">Ask the data</span></div><div class="stamp">Sample data <small>· illustrative, not real figures</small></div><style>
+.lv-cur { position: absolute; left: 0; top: 0; z-index: 90; pointer-events: none; }
+.lv-cur svg { display: block; filter: drop-shadow(0 2px 3px rgba(0,0,0,.25)); }
+.lv-cur i { position: absolute; left: -11px; top: -11px; width: 26px; height: 26px; border-radius: 50%; border: 2px solid #1f5fbf; opacity: 0; }
+.lv-tip { position: absolute; z-index: 80; background: #111827; color: #fff; border-radius: 10px; padding: 8px 12px; font-size: 12.5px;
+  line-height: 1.45; box-shadow: 0 10px 24px rgba(17,24,39,.25); white-space: nowrap; pointer-events: none; }
+.lv-tip b { font-size: 14px; }
+.lv-sw { display: inline-grid; } .lv-sw > * { grid-area: 1 / 1; }
+.stamp { z-index: 100 !important; }  /* the sample-data tag stays above every overlay */
+</style><script>
+const L = 11000, D = 800, EZ = 'cubic-bezier(.3,.7,.2,1)';
+const $ = (s, r = document) => r.querySelector(s), $$ = (s, r = document) => [...r.querySelectorAll(s)];
+const run = (el, k, o) => el && el.animate(k, o);
+// Hold `a` until t0, ease to `b` by t1, hold until t2, ease back to `a` by t3 (default: the reset at the loop's end).
+const win = (el, a, b, t0, t1, t2 = .93, t3 = .97, easing = EZ) => run(el, [
+  { ...a, offset: 0 }, { ...a, offset: t0, easing }, { ...b, offset: t1 }, { ...b, offset: t2, easing: 'ease-in-out' }, { ...a, offset: t3 }, { ...a, offset: 1 }],
+  { duration: L, delay: D, iterations: Infinity, fill: 'both' });
+const show = (el, t0, t1, dy = 6) => win(el, { opacity: 0, transform: `translateY(${dy}px)` }, { opacity: 1, transform: 'none' }, t0, t1);
+// Dims through a wrapper (SVG group, or each table cell) so it never fights an element's own fade-in.
+const dim = (el, t0, t1, to = .2) => { if (!el) return;
+  if (el.tagName === 'TR') return [...el.children].forEach(td => win(td, { opacity: 1 }, { opacity: to }, t0, t1));
+  if (el instanceof SVGElement) { const g = document.createElementNS('http://www.w3.org/2000/svg', 'g'); el.before(g); g.append(el); el = g; }
+  return win(el, { opacity: 1 }, { opacity: to }, t0, t1); };
+const muted = s => `<span style="color:#5f6b7a">${s}</span>`;
+const grow = (el, axis, origin, t0, t1) => { if (!el) return; el.style.transformBox = 'fill-box'; el.style.transformOrigin = origin;
+  return win(el, { transform: `scale${axis}(0)` }, { transform: 'none' }, t0, t1); };
+const draw = (p, t0, t1) => { if (!p) return; const n = p.getTotalLength(); p.style.strokeDasharray = `${n}px`;
+  return win(p, { strokeDashoffset: `${n}px` }, { strokeDashoffset: '0px' }, t0, t1, .93, .97, 'cubic-bezier(.4,0,.2,1)'); };
+const typeIn = (el, t0, t1) => win(el, { clipPath: 'inset(0 100% 0 0)' }, { clipPath: 'inset(0 0% 0 0)' }, t0, t1, .93, .97, `steps(${el.textContent.length}, end)`);
+const lines = (el, t0, t1, n = 4) => win(el, { clipPath: 'inset(0 0 100% 0)' }, { clipPath: 'inset(0 0 0% 0)' }, t0, t1, .93, .97, `steps(${n}, end)`);
+const intro = (els, step = 60, delay = 0) => els.forEach((el, i) => run(el, [{ opacity: 0, transform: 'translateY(10px)' }, { opacity: 1, transform: 'none' }],
+  { duration: 600, delay: delay + i * step, easing: EZ, fill: 'backwards' }));
+const swap = (el, html, t0, t1) => { if (!el) return; const a = document.createElement('span'), b = document.createElement('span'), w = document.createElement('span');
+  a.innerHTML = el.innerHTML; b.innerHTML = html; w.className = 'lv-sw'; w.append(a, b); el.replaceChildren(w);
+  win(a, { opacity: 1 }, { opacity: 0 }, t0, t1); win(b, { opacity: 0 }, { opacity: 1 }, t0, t1); return b; };
+const field = label => $$('.side .f').find(f => f.querySelector('label').textContent === label)?.querySelector('.sel span');
+const at = (el, dx = .5, dy = .5) => { const r = el.getBoundingClientRect(); return [r.left + dx * r.width, r.top + dy * r.height]; };
+const svgPt = (poly, i) => { const pts = poly.points, p = pts.getItem(i < 0 ? pts.numberOfItems + i : i), m = poly.getScreenCTM(); return [m.a * p.x + m.e, m.d * p.y + m.f]; };
+const tip = (x, y, html, t0, t1, t2, t3) => { const d = document.createElement('div'); d.className = 'lv-tip'; d.innerHTML = html;
+  document.body.append(d); d.style.left = x + 'px'; d.style.top = y + 'px'; win(d, { opacity: 0, transform: 'translateY(4px)' }, { opacity: 1, transform: 'none' }, t0, t1, t2, t3); return d; };
+// Cursor: steps are { p: [x, y], t, click }; it arrives at each point at time t and leaves shortly after.
+const cursor = steps => {
+  const c = document.createElement('div'); c.className = 'lv-cur';
+  c.innerHTML = '<i></i><svg width="26" height="26" viewBox="0 0 24 24"><path d="M4 2.5 19.5 12l-6.6 1.6 3.9 7.3-2.6 1.4-3.9-7.3L5.6 19Z" fill="#111827" stroke="#fff" stroke-width="1.4" stroke-linejoin="round"/></svg>';
+  document.body.append(c);
+  const tr = ([x, y]) => `translate(${x}px, ${y}px)`, start = [innerWidth - 80, innerHeight - 60], mv = 'cubic-bezier(.5,0,.2,1)';
+  const k = [{ transform: tr(start), opacity: 0, offset: 0 }, { transform: tr(start), opacity: 1, offset: Math.max(.01, steps[0].t - .14), easing: mv }];
+  steps.forEach((s, i) => { if (i) k.push({ transform: tr(steps[i - 1].p), opacity: 1, offset: Math.min(steps[i - 1].t + .03, s.t - .02), easing: mv });
+    k.push({ transform: tr(s.p), opacity: 1, offset: s.t }); });
+  const last = steps[steps.length - 1].p;
+  k.push({ transform: tr(last), opacity: 1, offset: .9 }, { transform: tr(last), opacity: 0, offset: .93 }, { transform: tr(last), opacity: 0, offset: 1 });
+  run(c, k, { duration: L, delay: D, iterations: Infinity, fill: 'both' });
+  const ring = [{ opacity: 0, transform: 'scale(.4)', offset: 0 }];
+  steps.filter(s => s.click).forEach(s => ring.push({ opacity: 0, transform: 'scale(.4)', offset: s.t }, { opacity: .9, transform: 'scale(.6)', offset: s.t + .004 },
+    { opacity: 0, transform: 'scale(1.6)', offset: s.t + .04 }));
+  ring.push({ opacity: 0, transform: 'scale(.4)', offset: 1 });
+  run(c.firstChild, ring, { duration: L, delay: D, iterations: Infinity, fill: 'both' });
+};
+const live = story => {
+  if (matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+  story();
+  // Test hook: #t=<ms> freezes every animation at that moment (used to check frames of the story).
+  const t = location.hash.match(/t=(\d+)/);
+  if (t) requestAnimationFrame(() => document.getAnimations().forEach(a => { a.pause(); a.currentTime = +t[1]; }));
+  // The site sends 'pause' / 'play' (WCAG 2.2.2: moving content longer than 5 s can be paused).
+  addEventListener('message', e => { if (e.source !== parent) return;
+    if (e.data === 'pause') document.getAnimations().forEach(a => a.pause());
+    if (e.data === 'play') document.getAnimations().forEach(a => a.play()); });
+};
+
+live(() => {
+  const cards = $$('.card'); intro($$('.kpi'));
+  $$('rect', cards[0]).forEach((r, i) => grow(r, 'Y', 'bottom', .03 + i * .018, .11 + i * .018));
+  show($('line[stroke-dasharray]', cards[0]), .3, .33, 0); show($$('text[style]', cards[0]).pop(), .31, .34, 2);
+  $$('rect', cards[1]).forEach((r, i) => grow(r, 'X', 'left', .3 + i * .025, .38 + i * .025));
+  $$('text[style*="font-weight"]', cards[1]).forEach((t, i) => show(t, .34 + i * .025, .4 + i * .025, 2));
+  const rows = $$('tr', cards[2]); show($('table', cards[2]), .45, .52, 6);
+  $$('td', rows[1]).forEach(td => win(td, { background: 'rgba(0,0,0,0)' }, { background: '#e6effc' }, .64, .66, .75, .77));
+  tip(...at(rows[1], .42, -1.9), 'Video meetings renews in <b>39 days</b><br>412 of 480 seats in use · auto-renew on', .65, .67, .75, .77);
+  const no = $('.pill.y', cards[2]);
+  tip(...at(no, -3.2, -2.3), 'Survey tool is <b>not on SSO</b> yet<br>flagged for IT before it renews', .8, .82);
+  cursor([{ p: at(rows[1], .3, .6), t: .63 }, { p: at(no, .5, .6), t: .79 }]);
+});</script></body></html>

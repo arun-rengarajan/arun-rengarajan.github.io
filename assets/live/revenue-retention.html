@@ -1,0 +1,131 @@
+<!doctype html><html><head><meta charset="utf-8"><style>
+* { box-sizing: border-box; margin: 0; padding: 0; }
+body { width: 1440px; height: 900px; overflow: hidden; background: #f5f6f8; color: #111827;
+  font: 14px/1.45 -apple-system, BlinkMacSystemFont, "SF Pro Text", "Inter", system-ui, sans-serif; position: relative; }
+.num { font-variant-numeric: tabular-nums; }
+.top { position: absolute; left: 260px; right: 0; top: 0; height: 52px; background: rgba(255,255,255,.72); backdrop-filter: blur(16px);
+  border-bottom: 1px solid #e3e6ec; display: flex; align-items: center; gap: 6px; padding: 0 28px; }
+.tab { padding: 6px 12px; border-radius: 8px; color: #5f6b7a; font-weight: 500; font-size: 13.5px; }
+.tab.on { background: #eef0f4; color: #111827; }
+.side { position: absolute; left: 0; top: 0; bottom: 0; width: 260px; background: #eef1f6; border-right: 1px solid #e3e6ec; padding: 26px 20px; }
+.side h4 { font-size: 15px; font-weight: 650; margin: 0 0 12px; }
+.side h4 + .f { margin-top: 0; }
+.f { margin: 0 0 14px; }
+.f label { display: block; font-size: 12.5px; color: #111827; margin-bottom: 5px; }
+.f .sel { background: #fff; border: 1px solid #e3e6ec; border-radius: 8px; padding: 8px 10px; font-size: 13px; color: #5f6b7a; display: flex; justify-content: space-between; }
+.side .reset { border: 1px solid #e3e6ec; border-radius: 8px; padding: 8px; text-align: center; color: #5f6b7a; font-size: 13px; margin-top: 6px; }
+.side .cap { font-size: 11.5px; color: #5f6b7a; margin-top: 22px; line-height: 1.5; }
+.main { position: absolute; left: 260px; right: 0; top: 52px; bottom: 0; padding: 26px 32px; }
+h1 { font-size: 26px; font-weight: 650; letter-spacing: -.01em; }
+.sub { color: #5f6b7a; font-size: 13px; margin: 2px 0 16px; }
+.kpis { display: flex; background: #fff; border: 1px solid #e3e6ec; border-radius: 12px; margin-bottom: 16px; }
+.kpi { flex: 1; padding: 14px 18px; border-left: 1px solid #e3e6ec; }
+.kpi:first-child { border-left: 0; }
+.kpi .l { font-size: 12.5px; color: #5f6b7a; }
+.kpi .v { font-size: 26px; font-weight: 650; letter-spacing: -.01em; font-variant-numeric: tabular-nums; }
+.kpi .d { font-size: 12px; color: #5f6b7a; }
+.d.up { color: #1f7a4d; } .d.dn { color: #b8463b; }
+.grid { display: grid; gap: 16px; }
+.card { background: #fff; border: 1px solid #e3e6ec; border-radius: 12px; padding: 16px 18px; overflow: hidden; }
+.card h3 { font-size: 15px; font-weight: 650; margin-bottom: 8px; }
+.card .note { font-size: 11.5px; color: #5f6b7a; margin-top: 6px; }
+table { width: 100%; border-collapse: collapse; font-size: 12.5px; }
+th { text-align: left; color: #5f6b7a; font-weight: 500; padding: 7px 8px; border-bottom: 1px solid #e3e6ec; }
+td { padding: 7px 8px; border-bottom: 1px solid #f0f2f5; font-variant-numeric: tabular-nums; }
+td.r, th.r { text-align: right; }
+.pill { display: inline-block; padding: 1px 9px; border-radius: 999px; font-size: 12px; font-weight: 600; }
+.g { background: #e7f3ec; color: #1f7a4d; } .y { background: #fbf1e4; color: #a8641a; } .rd { background: #f8e9e7; color: #b8463b; }
+.dock { position: absolute; right: 22px; bottom: 18px; display: flex; gap: 8px; }
+.dock span { padding: 8px 14px; border-radius: 999px; font-size: 13px; font-weight: 600; border: 1px solid #e3e6ec; background: #fff; }
+.dock span.p { background: #1f5fbf; color: #fff; border-color: #1f5fbf; }
+.stamp { position: absolute; right: 22px; top: 64px; z-index: 50; display: flex; align-items: center; gap: 8px; padding: 7px 14px;
+  border-radius: 999px; background: #fff3dc; border: 1.5px solid #a8641a; color: #7a4a00; font-weight: 700; font-size: 13px;
+  letter-spacing: .06em; text-transform: uppercase; box-shadow: 0 4px 14px rgba(168,100,26,.18); }
+.stamp small { font-weight: 500; letter-spacing: 0; text-transform: none; font-size: 12px; }
+svg text { font: 11px -apple-system, system-ui, sans-serif; fill: #5f6b7a; }
+</style></head><body><nav class="top"><span class="tab on">Overview</span><span class="tab">Movements</span><span class="tab">Mix</span><span class="tab">Clients</span></nav><aside class="side"><h4>Period</h4><div class="f"><label>As of</label><div class="sel"><span>October 2026</span><span>▾</span></div></div><div class="f"><label>Window</label><div class="sel"><span>Last 12 months</span><span>▾</span></div></div><h4>Filters</h4><div class="f"><label>Country</label><div class="sel"><span>All countries</span><span>▾</span></div></div><div class="f"><label>Client</label><div class="sel"><span>All clients</span><span>▾</span></div></div><div class="f"><label>Solution</label><div class="sel"><span>All solutions</span><span>▾</span></div></div><div class="f"><label>Commodity</label><div class="sel"><span>All commodities</span><span>▾</span></div></div><div class="reset">Reset filters</div><div class="cap">Contract lines from the ERP, synced every 3 hours. Closed months are frozen at month end.</div></aside><main class="main"><h1>Revenue retention</h1><div class="sub">212 clients · ARR in USD</div><div class="kpis"><div class="kpi"><div class="l">ARR</div><div class="v">$47.7M</div><div class="d up">+6.4% vs 12 months ago</div></div><div class="kpi"><div class="l">NRR, 12 months</div><div class="v">104%</div><div class="d up">+2 pts vs last year</div></div><div class="kpi"><div class="l">GRR, 12 months</div><div class="v">93%</div><div class="d dn">−1 pt vs last year</div></div><div class="kpi"><div class="l">Net change</div><div class="v">+$2.7M</div><div class="d up">+$4.9M gained · −$2.2M lost</div></div><div class="kpi"><div class="l">Clients</div><div class="v">212</div><div class="d up">+9 net</div></div></div><div class="grid" style="grid-template-columns:1.25fr 1fr"><div class="card"><h3>ARR grew 6.4% in the last 12 months</h3><svg viewBox="0 0 640 210" width="100%" style="display:block"><line x1="52" x2="632" y1="188.0" y2="188.0" stroke="#eef0f4"/><text x="46" y="192.0" text-anchor="end">$38M</text><line x1="52" x2="632" y1="152.0" y2="152.0" stroke="#eef0f4"/><text x="46" y="156.0" text-anchor="end">$40M</text><line x1="52" x2="632" y1="116.0" y2="116.0" stroke="#eef0f4"/><text x="46" y="120.0" text-anchor="end">$42M</text><line x1="52" x2="632" y1="80.0" y2="80.0" stroke="#eef0f4"/><text x="46" y="84.0" text-anchor="end">$44M</text><line x1="52" x2="632" y1="44.0" y2="44.0" stroke="#eef0f4"/><text x="46" y="48.0" text-anchor="end">$46M</text><line x1="52" x2="632" y1="8.0" y2="8.0" stroke="#eef0f4"/><text x="46" y="12.0" text-anchor="end">$48M</text><rect x="490.2" y="8" width="141.8" height="180" fill="#eef4fc"/><text x="52.0" y="206" text-anchor="middle">Jan 23</text><text x="206.7" y="206" text-anchor="middle">Jan 24</text><text x="361.3" y="206" text-anchor="middle">Jan 25</text><text x="516.0" y="206" text-anchor="middle">Jan 26</text><path d="M52.0,156.5 L64.9,154.4 L77.8,150.5 L90.7,144.3 L103.6,144.5 L116.4,138.0 L129.3,135.2 L142.2,134.8 L155.1,135.2 L168.0,129.5 L180.9,128.2 L193.8,123.2 L206.7,123.0 L219.6,118.5 L232.4,110.3 L245.3,103.5 L258.2,96.6 L271.1,94.1 L284.0,94.7 L296.9,85.5 L309.8,78.6 L322.7,80.6 L335.6,83.4 L348.4,86.5 L361.3,86.6 L374.2,77.5 L387.1,76.0 L400.0,71.1 L412.9,70.3 L425.8,67.8 L438.7,66.2 L451.6,64.8 L464.4,66.0 L477.3,67.0 L490.2,61.6 L503.1,55.8 L516.0,51.9 L528.9,43.9 L541.8,39.9 L554.7,38.5 L567.6,30.1 L580.4,23.6 L593.3,20.3 L606.2,21.4 L619.1,15.1 L632.0,13.9 L632.0,188.0 L52.0,188.0 Z" fill="#1f5fbf" opacity=".10"/><polyline points="52.0,156.5 64.9,154.4 77.8,150.5 90.7,144.3 103.6,144.5 116.4,138.0 129.3,135.2 142.2,134.8 155.1,135.2 168.0,129.5 180.9,128.2 193.8,123.2 206.7,123.0 219.6,118.5 232.4,110.3 245.3,103.5 258.2,96.6 271.1,94.1 284.0,94.7 296.9,85.5 309.8,78.6 322.7,80.6 335.6,83.4 348.4,86.5 361.3,86.6 374.2,77.5 387.1,76.0 400.0,71.1 412.9,70.3 425.8,67.8 438.7,66.2 451.6,64.8 464.4,66.0 477.3,67.0 490.2,61.6 503.1,55.8 516.0,51.9 528.9,43.9 541.8,39.9 554.7,38.5 567.6,30.1 580.4,23.6 593.3,20.3 606.2,21.4 619.1,15.1 632.0,13.9" fill="none" stroke="#1f5fbf" stroke-width="2"/></svg><div class="note">Shaded: the selected window. Each closed month is frozen, so history stops moving.</div></div><div class="card"><h3>Expansion outweighed churn by $1.5M</h3><svg viewBox="0 0 500 236" width="100%" style="display:block"><line x1="52" x2="494" y1="214.0" y2="214.0" stroke="#eef0f4"/><text x="46" y="218.0" text-anchor="end">$40M</text><line x1="52" x2="494" y1="174.8" y2="174.8" stroke="#eef0f4"/><text x="46" y="178.8" text-anchor="end">$42M</text><line x1="52" x2="494" y1="135.6" y2="135.6" stroke="#eef0f4"/><text x="46" y="139.6" text-anchor="end">$45M</text><line x1="52" x2="494" y1="96.4" y2="96.4" stroke="#eef0f4"/><text x="46" y="100.4" text-anchor="end">$48M</text><line x1="52" x2="494" y1="57.2" y2="57.2" stroke="#eef0f4"/><text x="46" y="61.2" text-anchor="end">$50M</text><line x1="52" x2="494" y1="18.0" y2="18.0" stroke="#eef0f4"/><text x="46" y="22.0" text-anchor="end">$52M</text><rect x="66.7" y="139.9" width="44.2" height="74.1" rx="2" fill="#9aa5b4"/><text x="88.8" y="134.9" text-anchor="middle" style="fill:#111827;font-weight:600">$44.7M</text><text x="88.8" y="231" text-anchor="middle">Start</text><rect x="140.4" y="110.2" width="44.2" height="29.8" rx="2" fill="#1f5fbf"/><text x="162.5" y="105.2" text-anchor="middle" style="fill:#1f5fbf;font-weight:600">+$1.9M</text><text x="162.5" y="231" text-anchor="middle">New</text><rect x="214.1" y="63.1" width="44.2" height="47.0" rx="2" fill="#1f5fbf"/><text x="236.2" y="58.1" text-anchor="middle" style="fill:#1f5fbf;font-weight:600">+$3.0M</text><text x="236.2" y="231" text-anchor="middle">Expansion</text><rect x="287.7" y="63.1" width="44.2" height="11.0" rx="2" fill="#b8463b"/><text x="309.8" y="58.1" text-anchor="middle" style="fill:#b8463b;font-weight:600">−$700K</text><text x="309.8" y="231" text-anchor="middle">Contraction</text><rect x="361.4" y="74.1" width="44.2" height="23.5" rx="2" fill="#b8463b"/><text x="383.5" y="69.1" text-anchor="middle" style="fill:#b8463b;font-weight:600">−$1.5M</text><text x="383.5" y="231" text-anchor="middle">Churn</text><rect x="435.1" y="97.6" width="44.2" height="116.4" rx="2" fill="#9aa5b4"/><text x="457.2" y="92.6" text-anchor="middle" style="fill:#111827;font-weight:600">$47.4M</text><text x="457.2" y="231" text-anchor="middle">End</text></svg></div><div class="card"><h3>NRR stayed above 100% for 9 of the last 12 months</h3><svg viewBox="0 0 640 150" width="100%" style="display:block"><line x1="52" x2="632" y1="128.0" y2="128.0" stroke="#eef0f4"/><text x="46" y="132.0" text-anchor="end">85%</text><line x1="52" x2="632" y1="98.0" y2="98.0" stroke="#eef0f4"/><text x="46" y="102.0" text-anchor="end">90%</text><line x1="52" x2="632" y1="68.0" y2="68.0" stroke="#eef0f4"/><text x="46" y="72.0" text-anchor="end">95%</text><line x1="52" x2="632" y1="38.0" y2="38.0" stroke="#eef0f4"/><text x="46" y="42.0" text-anchor="end">100%</text><line x1="52" x2="632" y1="8.0" y2="8.0" stroke="#eef0f4"/><text x="46" y="12.0" text-anchor="end">105%</text><text x="52.0" y="146" text-anchor="middle">Nov 24</text><text x="354.6" y="146" text-anchor="middle">Nov 25</text><text x="632.0" y="146" text-anchor="middle">Oct 26</text><polyline points="52.0,37.4 77.2,34.5 102.4,30.0 127.7,23.1 152.9,20.7 178.1,24.1 203.3,21.5 228.5,20.8 253.7,22.0 279.0,16.1 304.2,11.2 329.4,16.1 354.6,17.1 379.8,18.8 405.0,27.9 430.3,28.5 455.5,30.2 480.7,35.7 505.9,38.5 531.1,36.1 556.3,40.2 581.6,38.5 606.8,40.8 632.0,50.2" fill="none" stroke="#1f5fbf" stroke-width="2"/><polyline points="52.0,84.7 77.2,85.1 102.4,81.1 127.7,83.0 152.9,80.0 178.1,79.7 203.3,79.7 228.5,75.6 253.7,80.8 279.0,78.0 304.2,79.0 329.4,81.8 354.6,88.3 379.8,86.7 405.0,91.3 430.3,90.4 455.5,92.7 480.7,90.5 505.9,91.4 531.1,92.2 556.3,98.1 581.6,93.2 606.8,93.7 632.0,92.8" fill="none" stroke="#6aa1e8" stroke-width="2"/></svg><div class="note"><span style="color:#1f5fbf">●</span> NRR &nbsp; <span style="color:#6aa1e8">●</span> GRR · trailing 12 months</div></div><div class="card"><h3>Clients won and lost, by quarter</h3><svg viewBox="0 0 560 188" width="100%" style="display:block"><line x1="40" x2="560" y1="100" y2="100" stroke="#e3e6ec"/><rect x="52" y="73" width="34" height="27" rx="2" fill="#1f5fbf"/><rect x="52" y="100" width="34" height="36" rx="2" fill="#b8463b"/><text x="69" y="69" text-anchor="middle" style="fill:#111827">3</text><text x="69" y="148" text-anchor="middle" style="fill:#111827">4</text><text x="69" y="182" text-anchor="middle">Q1 25</text><rect x="114" y="37" width="34" height="63" rx="2" fill="#1f5fbf"/><rect x="114" y="100" width="34" height="36" rx="2" fill="#b8463b"/><text x="131" y="33" text-anchor="middle" style="fill:#111827">7</text><text x="131" y="148" text-anchor="middle" style="fill:#111827">4</text><text x="131" y="182" text-anchor="middle">Q2 25</text><rect x="176" y="73" width="34" height="27" rx="2" fill="#1f5fbf"/><rect x="176" y="100" width="34" height="45" rx="2" fill="#b8463b"/><text x="193" y="69" text-anchor="middle" style="fill:#111827">3</text><text x="193" y="157" text-anchor="middle" style="fill:#111827">5</text><text x="193" y="182" text-anchor="middle">Q3 25</text><rect x="238" y="64" width="34" height="36" rx="2" fill="#1f5fbf"/><rect x="238" y="100" width="34" height="45" rx="2" fill="#b8463b"/><text x="255" y="60" text-anchor="middle" style="fill:#111827">4</text><text x="255" y="157" text-anchor="middle" style="fill:#111827">5</text><text x="255" y="182" text-anchor="middle">Q4 25</text><rect x="300" y="73" width="34" height="27" rx="2" fill="#1f5fbf"/><rect x="300" y="100" width="34" height="36" rx="2" fill="#b8463b"/><text x="317" y="69" text-anchor="middle" style="fill:#111827">3</text><text x="317" y="148" text-anchor="middle" style="fill:#111827">4</text><text x="317" y="182" text-anchor="middle">Q1 26</text><rect x="362" y="19" width="34" height="81" rx="2" fill="#1f5fbf"/><rect x="362" y="100" width="34" height="27" rx="2" fill="#b8463b"/><text x="379" y="15" text-anchor="middle" style="fill:#111827">9</text><text x="379" y="139" text-anchor="middle" style="fill:#111827">3</text><text x="379" y="182" text-anchor="middle">Q2 26</text><rect x="424" y="73" width="34" height="27" rx="2" fill="#1f5fbf"/><rect x="424" y="100" width="34" height="9" rx="2" fill="#b8463b"/><text x="441" y="69" text-anchor="middle" style="fill:#111827">3</text><text x="441" y="121" text-anchor="middle" style="fill:#111827">1</text><text x="441" y="182" text-anchor="middle">Q3 26</text><rect x="486" y="19" width="34" height="81" rx="2" fill="#1f5fbf"/><rect x="486" y="100" width="34" height="18" rx="2" fill="#b8463b"/><text x="503" y="15" text-anchor="middle" style="fill:#111827">9</text><text x="503" y="130" text-anchor="middle" style="fill:#111827">2</text><text x="503" y="182" text-anchor="middle">Q4 26</text></svg></div></div></main><div class="dock"><span>Feedback</span><span class="p">Ask the data</span></div><div class="stamp">Sample data <small>· illustrative, not real figures</small></div><style>
+.lv-cur { position: absolute; left: 0; top: 0; z-index: 90; pointer-events: none; }
+.lv-cur svg { display: block; filter: drop-shadow(0 2px 3px rgba(0,0,0,.25)); }
+.lv-cur i { position: absolute; left: -11px; top: -11px; width: 26px; height: 26px; border-radius: 50%; border: 2px solid #1f5fbf; opacity: 0; }
+.lv-tip { position: absolute; z-index: 80; background: #111827; color: #fff; border-radius: 10px; padding: 8px 12px; font-size: 12.5px;
+  line-height: 1.45; box-shadow: 0 10px 24px rgba(17,24,39,.25); white-space: nowrap; pointer-events: none; }
+.lv-tip b { font-size: 14px; }
+.lv-sw { display: inline-grid; } .lv-sw > * { grid-area: 1 / 1; }
+.stamp { z-index: 100 !important; }  /* the sample-data tag stays above every overlay */
+</style><script>
+const L = 11000, D = 800, EZ = 'cubic-bezier(.3,.7,.2,1)';
+const $ = (s, r = document) => r.querySelector(s), $$ = (s, r = document) => [...r.querySelectorAll(s)];
+const run = (el, k, o) => el && el.animate(k, o);
+// Hold `a` until t0, ease to `b` by t1, hold until t2, ease back to `a` by t3 (default: the reset at the loop's end).
+const win = (el, a, b, t0, t1, t2 = .93, t3 = .97, easing = EZ) => run(el, [
+  { ...a, offset: 0 }, { ...a, offset: t0, easing }, { ...b, offset: t1 }, { ...b, offset: t2, easing: 'ease-in-out' }, { ...a, offset: t3 }, { ...a, offset: 1 }],
+  { duration: L, delay: D, iterations: Infinity, fill: 'both' });
+const show = (el, t0, t1, dy = 6) => win(el, { opacity: 0, transform: `translateY(${dy}px)` }, { opacity: 1, transform: 'none' }, t0, t1);
+// Dims through a wrapper (SVG group, or each table cell) so it never fights an element's own fade-in.
+const dim = (el, t0, t1, to = .2) => { if (!el) return;
+  if (el.tagName === 'TR') return [...el.children].forEach(td => win(td, { opacity: 1 }, { opacity: to }, t0, t1));
+  if (el instanceof SVGElement) { const g = document.createElementNS('http://www.w3.org/2000/svg', 'g'); el.before(g); g.append(el); el = g; }
+  return win(el, { opacity: 1 }, { opacity: to }, t0, t1); };
+const muted = s => `<span style="color:#5f6b7a">${s}</span>`;
+const grow = (el, axis, origin, t0, t1) => { if (!el) return; el.style.transformBox = 'fill-box'; el.style.transformOrigin = origin;
+  return win(el, { transform: `scale${axis}(0)` }, { transform: 'none' }, t0, t1); };
+const draw = (p, t0, t1) => { if (!p) return; const n = p.getTotalLength(); p.style.strokeDasharray = `${n}px`;
+  return win(p, { strokeDashoffset: `${n}px` }, { strokeDashoffset: '0px' }, t0, t1, .93, .97, 'cubic-bezier(.4,0,.2,1)'); };
+const typeIn = (el, t0, t1) => win(el, { clipPath: 'inset(0 100% 0 0)' }, { clipPath: 'inset(0 0% 0 0)' }, t0, t1, .93, .97, `steps(${el.textContent.length}, end)`);
+const lines = (el, t0, t1, n = 4) => win(el, { clipPath: 'inset(0 0 100% 0)' }, { clipPath: 'inset(0 0 0% 0)' }, t0, t1, .93, .97, `steps(${n}, end)`);
+const intro = (els, step = 60, delay = 0) => els.forEach((el, i) => run(el, [{ opacity: 0, transform: 'translateY(10px)' }, { opacity: 1, transform: 'none' }],
+  { duration: 600, delay: delay + i * step, easing: EZ, fill: 'backwards' }));
+const swap = (el, html, t0, t1) => { if (!el) return; const a = document.createElement('span'), b = document.createElement('span'), w = document.createElement('span');
+  a.innerHTML = el.innerHTML; b.innerHTML = html; w.className = 'lv-sw'; w.append(a, b); el.replaceChildren(w);
+  win(a, { opacity: 1 }, { opacity: 0 }, t0, t1); win(b, { opacity: 0 }, { opacity: 1 }, t0, t1); return b; };
+const field = label => $$('.side .f').find(f => f.querySelector('label').textContent === label)?.querySelector('.sel span');
+const at = (el, dx = .5, dy = .5) => { const r = el.getBoundingClientRect(); return [r.left + dx * r.width, r.top + dy * r.height]; };
+const svgPt = (poly, i) => { const pts = poly.points, p = pts.getItem(i < 0 ? pts.numberOfItems + i : i), m = poly.getScreenCTM(); return [m.a * p.x + m.e, m.d * p.y + m.f]; };
+const tip = (x, y, html, t0, t1, t2, t3) => { const d = document.createElement('div'); d.className = 'lv-tip'; d.innerHTML = html;
+  document.body.append(d); d.style.left = x + 'px'; d.style.top = y + 'px'; win(d, { opacity: 0, transform: 'translateY(4px)' }, { opacity: 1, transform: 'none' }, t0, t1, t2, t3); return d; };
+// Cursor: steps are { p: [x, y], t, click }; it arrives at each point at time t and leaves shortly after.
+const cursor = steps => {
+  const c = document.createElement('div'); c.className = 'lv-cur';
+  c.innerHTML = '<i></i><svg width="26" height="26" viewBox="0 0 24 24"><path d="M4 2.5 19.5 12l-6.6 1.6 3.9 7.3-2.6 1.4-3.9-7.3L5.6 19Z" fill="#111827" stroke="#fff" stroke-width="1.4" stroke-linejoin="round"/></svg>';
+  document.body.append(c);
+  const tr = ([x, y]) => `translate(${x}px, ${y}px)`, start = [innerWidth - 80, innerHeight - 60], mv = 'cubic-bezier(.5,0,.2,1)';
+  const k = [{ transform: tr(start), opacity: 0, offset: 0 }, { transform: tr(start), opacity: 1, offset: Math.max(.01, steps[0].t - .14), easing: mv }];
+  steps.forEach((s, i) => { if (i) k.push({ transform: tr(steps[i - 1].p), opacity: 1, offset: Math.min(steps[i - 1].t + .03, s.t - .02), easing: mv });
+    k.push({ transform: tr(s.p), opacity: 1, offset: s.t }); });
+  const last = steps[steps.length - 1].p;
+  k.push({ transform: tr(last), opacity: 1, offset: .9 }, { transform: tr(last), opacity: 0, offset: .93 }, { transform: tr(last), opacity: 0, offset: 1 });
+  run(c, k, { duration: L, delay: D, iterations: Infinity, fill: 'both' });
+  const ring = [{ opacity: 0, transform: 'scale(.4)', offset: 0 }];
+  steps.filter(s => s.click).forEach(s => ring.push({ opacity: 0, transform: 'scale(.4)', offset: s.t }, { opacity: .9, transform: 'scale(.6)', offset: s.t + .004 },
+    { opacity: 0, transform: 'scale(1.6)', offset: s.t + .04 }));
+  ring.push({ opacity: 0, transform: 'scale(.4)', offset: 1 });
+  run(c.firstChild, ring, { duration: L, delay: D, iterations: Infinity, fill: 'both' });
+};
+const live = story => {
+  if (matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+  story();
+  // Test hook: #t=<ms> freezes every animation at that moment (used to check frames of the story).
+  const t = location.hash.match(/t=(\d+)/);
+  if (t) requestAnimationFrame(() => document.getAnimations().forEach(a => { a.pause(); a.currentTime = +t[1]; }));
+  // The site sends 'pause' / 'play' (WCAG 2.2.2: moving content longer than 5 s can be paused).
+  addEventListener('message', e => { if (e.source !== parent) return;
+    if (e.data === 'pause') document.getAnimations().forEach(a => a.pause());
+    if (e.data === 'play') document.getAnimations().forEach(a => a.play()); });
+};
+
+live(() => {
+  const cards = $$('.card'); intro($$('.kpi'));
+  const line = $('polyline', cards[0]); draw(line, .02, .28); win($('path', cards[0]), { opacity: 0 }, { opacity: .1 }, .18, .3);
+  $$('rect', cards[1]).forEach((r, i) => grow(r, 'Y', r.getAttribute('fill') === '#b8463b' ? 'top' : 'bottom', .26 + i * .04, .34 + i * .04));
+  $$('text[style]', cards[1]).forEach((t, i) => show(t, .3 + i * .04, .36 + i * .04, 3));
+  $$('polyline', cards[2]).forEach((p, i) => draw(p, .44 + i * .05, .64 + i * .05));
+  $$('rect', cards[3]).forEach((r, i) => grow(r, 'Y', i % 2 ? 'top' : 'bottom', .58 + (i >> 1) * .025, .65 + (i >> 1) * .025));
+  $$('text[style]', cards[3]).forEach((t, i) => show(t, .62 + (i >> 1) * .025, .67 + (i >> 1) * .025, 3));
+  const [x, y] = svgPt(line, -1);
+  const dot = document.createElement('div'); document.body.append(dot);
+  Object.assign(dot.style, { position: 'absolute', left: x - 6 + 'px', top: y - 6 + 'px', width: '12px', height: '12px', borderRadius: '50%',
+    background: '#1f5fbf', border: '2px solid #fff', boxShadow: '0 0 0 4px rgba(31,95,191,.2)', zIndex: 70 });
+  win(dot, { opacity: 0 }, { opacity: 1 }, .79, .8);
+  tip(x - 190, y - 70, `October 2026<br><b>${$('.kpi .v').textContent}</b> ARR · frozen at month end`, .8, .82);
+  cursor([{ p: [x + 4, y + 6], t: .78 }]);
+});</script></body></html>
